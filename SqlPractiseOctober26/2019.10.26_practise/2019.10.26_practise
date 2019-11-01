@@ -1,4 +1,5 @@
 /*2019.10.26_practise*/
+
 --1. Написать SQL script для создания таблички Planets. Заполнить значениями из примера:
 CREATE TABLE planets (
 	ID INT PRIMARY KEY identity(1, 1)
