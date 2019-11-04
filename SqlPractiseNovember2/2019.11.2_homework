@@ -1,0 +1,145 @@
+--11.
+SELECT AVG(speed) AS avg_speed
+FROM pc;
+
+--12.
+SELECT AVG(speed) AS avg_speed
+FROM Laptop
+WHERE price > 1000;
+
+--13.
+SELECT AVG(PC.speed) AS avg_speed
+FROM PC
+JOIN Product ON PC.model = Product.model
+WHERE Product.maker = 'A';
+
+--14.
+SELECT sh.class
+	,sh.name
+	,cl.country
+FROM ships AS sh
+	,classes AS cl
+WHERE sh.class = cl.class
+	AND cl.numGuns >= 10;
+
+--15.
+SELECT hd
+FROM pc
+GROUP BY hd
+HAVING count(hd) >= 2;
+
+--16.
+SELECT DISTINCT a.model AS model
+	,b.model AS model
+	,a.speed
+	,a.ram
+FROM pc AS a
+	,pc b
+WHERE a.speed = b.speed
+	AND a.ram = b.ram
+	AND a.model > b.model;
+
+--17.
+SELECT DISTINCT prod.type
+	,lt.model
+	,lt.speed
+FROM Laptop AS lt
+	,product AS prod
+WHERE prod.type = 'Laptop'
+	AND lt.speed < ALL (
+		SELECT PC.speed
+		FROM PC
+		)
+
+--19.
+SELECT prod.maker
+	,AVG(lt.screen) AS Avg_screen
+FROM product AS prod
+JOIN Laptop AS lt ON prod.model = lt.model
+GROUP BY maker
+
+--21.
+SELECT prod.maker
+	,Max(pc.price) AS Max_price
+FROM product AS prod
+JOIN pc ON prod.model = pc.model
+GROUP BY maker
+
+--22.
+SELECT pc.speed
+	,AVG(pc.price) AS Avg_price
+FROM pc
+WHERE pc.speed > 600
+GROUP BY speed
+
+--28.
+SELECT count(makers.maker) AS quantity
+FROM (
+	SELECT maker
+	FROM product
+	GROUP BY maker
+	HAVING count(model) = 1
+	) AS makers
+
+--31.
+SELECT class
+	,country
+FROM classes
+WHERE bore >= 16
+
+--33.
+SELECT ship
+FROM outcomes
+WHERE battle = 'North Atlantic'
+	AND result = 'sunk'
+
+--38.
+SELECT country
+FROM classes
+WHERE type = 'bb'
+
+INTERSECT
+
+SELECT country
+FROM classes
+WHERE type = 'bc'
+
+--42.
+SELECT ship
+	,battle
+FROM outcomes
+WHERE result = 'sunk'
+
+--44.
+SELECT name
+FROM ships
+WHERE name LIKE 'R%'
+
+UNION
+
+SELECT ship
+FROM outcomes
+WHERE ship LIKE 'R%'
+
+--45.
+SELECT name
+FROM ships
+WHERE name LIKE '% % %'
+
+UNION
+
+SELECT ship
+FROM outcomes
+WHERE ship LIKE '% % %'
+
+--49.(notresolved)
+SELECT name
+FROM ships
+JOIN classes ON ships.class = classes.class
+WHERE classes.bore = 16
+
+--50.(notresolved)
+SELECT battle
+FROM outcomes
+JOIN ships ON ships.name = outcomes.ship
+WHERE ships.class = 'Kongo'
