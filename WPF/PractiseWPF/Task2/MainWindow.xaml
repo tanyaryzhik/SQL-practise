@@ -1,0 +1,27 @@
+﻿<Window x:Class="Task2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="325*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"></RowDefinition>
+            <RowDefinition Height="50*"></RowDefinition>
+            <RowDefinition Height="53*"></RowDefinition>
+            <RowDefinition Height="210*"></RowDefinition>
+            <RowDefinition Height="56*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Name="Next_Button" Margin="10">&gt;Next</Button>
+        <Button Name="Prev_Button" Margin="10" Grid.Row="1">&lt;Prev</Button>
+        <CheckBox Content="Expand"  Margin="10" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="CheckBox_Checked"/>
+        <Button Content="Cancel"  Margin="10" Grid.Row="4" />
+        <TextBlock Grid.Column="1"  Margin="10" TextWrapping="Wrap"  Grid.RowSpan="4" FontSize="20" Text="Markup files that are created in Visual Studio are automatically saved in the Unicode UTF-8 file format, which means that most special characters, such as accent marks, are encoded correctly. However, there is a set of commonly-used special characters that are handled differently. These special characters follow the World Wide Web Consortium (W3C) XML standard for encoding."/>
+    </Grid>
+</Window>
