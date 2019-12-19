@@ -1,0 +1,55 @@
+﻿<Window x:Class="Task12.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task12"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="800">
+    <Grid>
+        <ComboBox Height="100" Width="300" VerticalAlignment="Center">
+            <ComboBoxItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\user\Source\SQL-practise\SQL-practise\WPF\PractiseWPF\Task12\Images\Aston-Martin-AMV8-1989-sports-classic-car.jpg" Width="100">
+                    </Image>
+                    <TextBlock>Aston-Martin</TextBlock>
+                </StackPanel>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\user\Source\SQL-practise\SQL-practise\WPF\PractiseWPF\Task12\Images\Chevrolet-Chevelle-SS-1977-muscle-classic-car.jpg" Width="100">
+                    </Image>
+                    <TextBlock>Chevrolet-Chevelle</TextBlock>
+                </StackPanel>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\user\Source\SQL-practise\SQL-practise\WPF\PractiseWPF\Task12\Images\classic-Corvette-C3-sports-car-1968-1982.jpg" Width="100">
+                    </Image>
+                    <TextBlock>Corvette-C3</TextBlock>
+                </StackPanel>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\user\Source\SQL-practise\SQL-practise\WPF\PractiseWPF\Task12\Images\classic-Ford-Mustang-70s-muscle-car.jpg" Width="100">
+                    </Image>
+                    <TextBlock>Ford-Mustang</TextBlock>
+                </StackPanel>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\user\Source\SQL-practise\SQL-practise\WPF\PractiseWPF\Task12\Images\Ferrari-308-GTBi-1980-sports-classic-car.jpg" Width="100">
+                    </Image>
+                    <TextBlock>Ferrari-308</TextBlock>
+                </StackPanel>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\user\Source\SQL-practise\SQL-practise\WPF\PractiseWPF\Task12\Images\Miura-Lamborghini-old-red-car-free-download.jpg" Width="100">
+                    </Image>
+                    <TextBlock>Miura-Lamborghini</TextBlock>
+                </StackPanel>
+            </ComboBoxItem>
+        </ComboBox>
+    </Grid>
+</Window>
