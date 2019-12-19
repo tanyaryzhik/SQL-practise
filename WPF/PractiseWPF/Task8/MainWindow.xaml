@@ -5,19 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Task8"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="648.897">
-    <DockPanel >
+        Title="MainWindow" Height="350" Width="500">
+    <DockPanel LastChildFill="False">
         <Button DockPanel.Dock="Top" Content="Top" Height="50" />
         <Button DockPanel.Dock="Bottom" Content="Bottom" Height="50" />
-        <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
-            <Button Width="50" >Left</Button>
-            <Button Width="50" >Left</Button>
-        </StackPanel>
-        <TextBlock Width="200"></TextBlock>
-        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" Width="100" Margin="0">
-            <Button Width="50">Right</Button>
-            <Button Content="Right" Width="50"/>
-        </StackPanel>
-
+        <Button Width="50" DockPanel.Dock="Left" >Left</Button>
+        <Button Width="50" DockPanel.Dock="Left">Left</Button>
+        <Button Width="50" DockPanel.Dock="Right">Right</Button>
+        <Button Width="50" DockPanel.Dock="Right">Right</Button>
     </DockPanel>
 </Window>
