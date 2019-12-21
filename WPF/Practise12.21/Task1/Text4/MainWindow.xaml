@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:Text4"
         mc:Ignorable="d"
         Title="MainWindow" Height="200" Width="500">
-    <Grid>
+    <Grid >
+        <Grid.Resources>
+            <local:Person x:Key="person" FirstName="Helen" LastName="Smith" IsMaster="True"></local:Person>
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="66*"></ColumnDefinition>
             <ColumnDefinition Width="85*"></ColumnDefinition>
@@ -20,10 +23,14 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0" Margin="10" Content="First Name" FontSize="20"></Label>
-        <Label Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0" Margin="10" Content="Last Name" FontSize="20"></Label>
-        <TextBox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Margin="10" FontSize="20" Text="{Binding FirstName}"></TextBox>
-        <TextBox Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Margin="10" FontSize="20" Text="{Binding LastName}"></TextBox>
-        <CheckBox Grid.Row="2" Grid.Column="0"  Content="Master degree" Grid.ColumnSpan="3" Margin="10" FontSize="20" IsChecked="{Binding IsMaster}"> </CheckBox>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="3">
+            <Label Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0" Margin="10" Content="First Name" FontSize="20"></Label>
+            <Label Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0" Margin="10" Content="Last Name" FontSize="20"></Label>
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="3" DataContext="{Binding Source={StaticResource person}}">
+            <TextBox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Margin="10" FontSize="20" Text="{Binding FirstName}"></TextBox>
+            <TextBox Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Margin="10" FontSize="20" Text="{Binding LastName}"></TextBox>
+            <CheckBox Grid.Row="2" Grid.Column="0"  Content="Master degree" Grid.ColumnSpan="3" Margin="10" FontSize="20" IsChecked="{Binding IsMaster}"></CheckBox>
+        </StackPanel>
     </Grid>
 </Window>

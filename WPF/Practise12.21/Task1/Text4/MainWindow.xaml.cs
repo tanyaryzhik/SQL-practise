@@ -25,7 +25,7 @@ namespace Text4
             InitializeComponent();
 
             var person = new Person { FirstName = "Alen", LastName = "Martin", IsMaster = true };
-            this.DataContext = person;
+            //this.DataContext = person;
         }
     }
 
