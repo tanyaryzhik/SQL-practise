@@ -32,9 +32,9 @@
             <Label Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0" Margin="10" Content="Last Name" FontSize="20"></Label>
         </StackPanel>
         <StackPanel Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="3" >
-            <TextBox x:Name="FistnameTxtbx" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Margin="10" FontSize="20" Text="{Binding Source={StaticResource theFirstName}}"></TextBox>
-            <TextBox x:Name="LastnameTxtbx" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Margin="10" FontSize="20" Text="{Binding Source={StaticResource theLastName}}"></TextBox>
-            <CheckBox x:Name="Masterchbx" Grid.Row="2" Grid.Column="0"  Content="Master degree" Grid.ColumnSpan="3" Margin="10" FontSize="20" IsChecked="{Binding Source={StaticResource theIsMaster}}"></CheckBox>
+            <TextBox x:Name="FistnameTxtbx" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Margin="10" FontSize="20" Text="{Binding Source={StaticResource theFirstName}, Mode=OneWay}"></TextBox>
+            <TextBox x:Name="LastnameTxtbx" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Margin="10" FontSize="20" Text="{Binding Source={StaticResource theLastName}, Mode=OneWay}"></TextBox>
+            <CheckBox x:Name="Masterchbx" Grid.Row="2" Grid.Column="0"  Content="Master degree" Grid.ColumnSpan="3" Margin="10" FontSize="20" IsChecked="{Binding Source={StaticResource theIsMaster}, Mode=OneWay}"></CheckBox>
         </StackPanel>
     </Grid>
 </Window>
