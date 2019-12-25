@@ -27,6 +27,12 @@ namespace Text4
             //var person = new Person { FirstName = "Alen", LastName = "Martin", IsMaster = true };
             
             //this.DataContext = person;
+            string firstName = "Tom";
+            string lastName = "Reddle";
+            bool isMaster = true;
+            this.FistnameTxtbx.Text = firstName;
+            this.LastnameTxtbx.Text = lastName;
+            this.Masterchbx.IsChecked = isMaster;
         }
     }
 
