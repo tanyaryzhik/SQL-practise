@@ -24,5 +24,49 @@ namespace Task10
         {
             InitializeComponent();
         }
+
+        private void OnButtonClick(object sender, RoutedEventArgs e)
+            { 
+            if (theTextBox.Text == "0")
+                theTextBox.Text = String.Empty;
+            FrameworkElement feSource = e.Source as FrameworkElement;
+            switch (feSource.Name)
+            {
+                case "Button9":
+                      theTextBox.Text = theTextBox.Text + "7";
+                      break;
+                case "Button10":
+                      theTextBox.Text = theTextBox.Text + "8";
+                      break;
+                case "Button11":
+                      theTextBox.Text = theTextBox.Text + "9";
+                      break;
+                case "Button13":
+                      theTextBox.Text = theTextBox.Text + "4";
+                      break;
+                case "Button14":
+                      theTextBox.Text = theTextBox.Text + "5";
+                      break;
+                case "Button15":
+                      theTextBox.Text = theTextBox.Text + "6";
+                      break;
+                case "Button17":
+                      theTextBox.Text = theTextBox.Text + "1";
+                      break;
+                case "Button18":
+                      theTextBox.Text = theTextBox.Text + "2";
+                      break;
+                case "Button19":
+                      theTextBox.Text = theTextBox.Text + "3";
+                      break;
+                case "Button22":
+                      theTextBox.Text = theTextBox.Text + "0";
+                      break;
+                case "Button23":
+                      theTextBox.Text = theTextBox.Text + ".";
+                      break;
+                 
+            }
+        }
     }
 }
