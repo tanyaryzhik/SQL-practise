@@ -23,15 +23,19 @@ namespace Task7
         public MainWindow()
         {
             InitializeComponent();
+            List<Employee> employees = new List<Employee>();
+            employees.Add(new Employee { ID = 1, Department = "GIS", HiredDate = "2008-02-25", Name = "Alan Smith", IsManager = true });
+            employees.Add(new Employee { ID = 2, Department = "Marketing", HiredDate = "2010-12-30", Name = "Alice Watts", IsManager = false });
+            this.DataContext = employees;
         }
 
         public class Employee
         {
-            public int MyProperty { get; set; }
-            public string MyProperty { get; set; }
-            public string MyProperty { get; set; }
-            public int MyProperty { get; set; }
-            public int MyProperty { get; set; }
+            public int ID { get; set; }
+            public string Name { get; set; }
+            public string Department { get; set; }
+            public string HiredDate { get; set; }
+            public bool IsManager { get; set; }
 
         }
     }

@@ -5,37 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Task7"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="350" Width="500">
     <Grid>
         <Grid.RowDefinitions>
-                
             <RowDefinition></RowDefinition>
-                
             <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding}" BorderThickness="2" Width="400" MaxHeight="200">
+       </Grid.RowDefinitions>
+        <DataGrid x:Name="employeesGrid" AutoGenerateColumns="False" ItemsSource="{Binding}" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" FontSize="20" Width="20" Binding="{Binding Path=Id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Name" FontSize="20" Width="120" Binding="{Binding Path=Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Department" FontSize="20" Width="250" Binding="{Binding Path=Department}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Id" FontSize="10" Width="20" Binding="{Binding Path=ID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" FontSize="10" Width="120" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Department" FontSize="10" Width="250" Binding="{Binding Path=Department}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <WrappPanel Grid.Row="1" DataContext="{Binding ElementName=employees, Path=SelectedItem}" Margin="5" Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <Lable Content="Name"></Lable>
-                <TextBox Text="{Binding Path=Name}"></TextBox>
+        <WrapPanel Grid.Row="1" DataContext="{Binding ElementName=employeesGrid, Path=SelectedItem}" Margin="10" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" >
+                <Label Content="Name"></Label>
+                <TextBox Text="{Binding Path=Name}" Width="100" Margin="10"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Lable Content="Hired date"></Lable>
-                <TextBox Text="{Binding Path=HireDate}"></TextBox>
+                <Label Content="Hired date"></Label>
+                <TextBox Text="{Binding Path=HiredDate}" Width="100" Margin="10"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Lable Content="Department"></Lable>
-                <TextBox Text="{Binding Path=Department}"></TextBox>
+                <Label Content="Department"></Label>
+                <TextBox Text="{Binding Path=Department}" Width="100" Margin="10"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <CheckBox IsChecked="{Binding Path=IsManager}">Is manager</CheckBox>
             </StackPanel>
-        </WrappPanel>
+        </WrapPanel>
     </Grid>
 </Window>
