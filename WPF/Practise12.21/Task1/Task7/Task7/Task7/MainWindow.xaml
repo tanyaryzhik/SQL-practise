@@ -7,6 +7,35 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+                
+            <RowDefinition></RowDefinition>
+                
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding}" BorderThickness="2" Width="400" MaxHeight="200">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" FontSize="20" Width="20" Binding="{Binding Path=Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" FontSize="20" Width="120" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Department" FontSize="20" Width="250" Binding="{Binding Path=Department}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <WrappPanel Grid.Row="1" DataContext="{Binding ElementName=employees, Path=SelectedItem}" Margin="5" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Lable Content="Name"></Lable>
+                <TextBox Text="{Binding Path=Name}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Lable Content="Hired date"></Lable>
+                <TextBox Text="{Binding Path=HireDate}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Lable Content="Department"></Lable>
+                <TextBox Text="{Binding Path=Department}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding Path=IsManager}">Is manager</CheckBox>
+            </StackPanel>
+        </WrappPanel>
     </Grid>
 </Window>

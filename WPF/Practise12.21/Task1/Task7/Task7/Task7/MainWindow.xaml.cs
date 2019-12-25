@@ -24,5 +24,15 @@ namespace Task7
         {
             InitializeComponent();
         }
+
+        public class Employee
+        {
+            public int MyProperty { get; set; }
+            public string MyProperty { get; set; }
+            public string MyProperty { get; set; }
+            public int MyProperty { get; set; }
+            public int MyProperty { get; set; }
+
+        }
     }
 }
