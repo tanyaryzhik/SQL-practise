@@ -1,0 +1,10 @@
+﻿<Window x:Class="CommandTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local ="clr-namespace:CommandTest" 
+        Title="MainWindow" Height="250" Width="600">
+    <StackPanel>
+     <Button Margin="50" Height="20" Command="ApplicationCommands.Open">Open</Button>
+    <CheckBox Margin="20"  Command="local:MyCommands.ChangeButtonStatus">Activate button</CheckBox>
+    </StackPanel>
+</Window>
