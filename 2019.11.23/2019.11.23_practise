@@ -1,0 +1,129 @@
+--1. WorldEvents db – создать хранимку, которая показывает все ивенты произошедшие в Августе.
+CREATE PROC AugustEvents
+AS
+SELECT *
+FROM tblEvent
+WHERE Month(EventDate) = 08
+
+/*2. WorldEvents db –  создать хранимку, которая показывает все страны с ContinentId равным 1 
+в алфавитном порядке.*/
+CREATE PROC GetCountrIesContinentOne
+AS
+SELECT *
+FROM tblCountry
+WHERE ContinentID = 1
+ORDER BY CountryName
+
+/*3. Doctor Who db – Создать хранимку, которая считает все эпизоды в которых Доктором был Matt Smith.*/
+CREATE PROC GetCountOfEpisodesWithMattSmith
+AS
+SELECT COUNT(*)
+FROM tblEpisode AS e
+	,tblDoctor AS d
+WHERE e.DoctorId = d.DoctorId
+	AND d.DoctorName = 'Matt Smith'
+
+/*4.  Doctor Who db – создать хранимку,
+ которая выводит все эпизоды с определённым актером (актер параметр).*/
+CREATE PROC GetEpisodesWithActor @actor NVARCHAR(50)
+AS
+SELECT *
+FROM tblEpisode AS e
+INNER JOIN tblEpisodeCompanion AS ec ON e.EpisodeId = ec.EpisodeId
+INNER JOIN tblCompanion AS c ON ec.CompanionId = c.CompanionId
+WHERE c.WhoPlayed = @actor
+
+/*5.Doctor Who db - создать хранимку, которая выводит 3 наиболее часто снимающихся companions.*/
+CREATE PROC GetMaxCompanion
+AS
+SELECT TOP (3) CompanionId
+	,Count(EpisodeId) AS CountEpisodes
+FROM tblEpisodeCompanion
+GROUP BY CompanionId
+ORDER BY CountEpisodes DESC
+
+--Trigger
+/*5.WorldEvents db – написать триггер, который будет отслеживать изменение аттрибута 
+CountryName (UPDATE) в таблице Country. Если при приходит пустое значение, то оставлять старое значение.
+Также триггер должен вносить все изменения CountryName в отдельную таблицу.*/
+CREATE TRIGGER [dbo].[country_name_update] ON [dbo].[tblCountry]
+INSTEAD OF UPDATE
+AS
+BEGIN
+	IF 
+		UPDATE (CountryName)
+
+	DECLARE @newCountryName NVARCHAR(50) = (
+			SELECT inserted.CountryName
+			FROM inserted
+			)
+	DECLARE @oldCountryName NVARCHAR(50) = (
+			SELECT deleted.CountryName
+			FROM deleted
+			)
+
+	IF @newCountryName <> ''
+	BEGIN
+		UPDATE tblCountry
+		SET CountryName = inserted.CountryName
+		FROM inserted
+		INNER JOIN tblCountry ON inserted.CountryID = tblCountry.CountryId;
+
+		INSERT INTO ChangeCountryNameLog
+		VALUES (
+			@oldCountryName
+			,@newCountryName
+			,Getdate()
+			)
+	END
+END
+
+/* 2. Любая БД – создать триггер на базу данных, который будет создавать
+   (если не существует) таблицу и трэкать все изменения в базе данных в формате
+   EventType, PostTime , ObjectName , CommandText используя EVENTDATA() объект.
+Пример использования  EVENTDATA() 
+
+EVENTDATA().value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]', 'nvarchar(max)').*/
+USE AdventureWorks2014;
+GO
+
+CREATE TRIGGER log ON DATABASE
+FOR DDL_DATABASE_LEVEL_EVENTS AS
+
+BEGIN
+	DECLARE @data XML
+
+	SET @data = EVENTDATA()
+
+	IF (
+			(
+				SELECT TABLE_NAME
+				FROM information_schema.tables
+				WHERE TABLE_NAME = 'ddl_log'
+				) IS NULL
+			)
+	BEGIN
+		CREATE TABLE ddl_log (
+			PostTime DATETIME
+			,DB_User NVARCHAR(100)
+			,Event NVARCHAR(100)
+			,TSQL NVARCHAR(2000)
+			);
+	END
+
+	INSERT ddl_log (
+		PostTime
+		,DB_User
+		,Event
+		,TSQL
+		)
+	VALUES (
+		GETDATE()
+		,CONVERT(NVARCHAR(100), CURRENT_USER)
+		,@data.value('(/EVENT_INSTANCE/EventType)[1]', 'nvarchar(100)')
+		,@data.value('(/EVENT_INSTANCE/TSQLCommand)[1]', 'nvarchar(2000)')
+		);
+END
+GO
+
+
