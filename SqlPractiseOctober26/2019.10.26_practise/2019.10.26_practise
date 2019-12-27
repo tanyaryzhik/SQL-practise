@@ -1,0 +1,131 @@
+/*2019.10.26_practise*/
+
+--1. Написать SQL script для создания таблички Planets. Заполнить значениями из примера:
+CREATE TABLE planets (
+	ID INT PRIMARY KEY identity(1, 1)
+	,PlanetName VARCHAR(15)
+	,Radius INT
+	,SunSeason FLOAT
+	,OpeningYear SMALLINT CHECK (OpeningYear < 2020)
+	,HavingRings BIT
+	,Opener VARCHAR(50)
+	);
+
+INSERT INTO planets
+VALUES (
+	'Mars'
+	,3396
+	,687
+	,1659
+	,0
+	,'Christiaan Huygens'
+	)
+	,(
+	'Saturn'
+	,60268
+	,10759.22
+	,NULL
+	,1
+	,NULL
+	)
+	,(
+	'Neptune'
+	,24764
+	,60190
+	,1846
+	,1
+	,'John Couch Adams'
+	)
+	,(
+	'Mercury'
+	,2439
+	,115.88
+	,1631
+	,0
+	,'Nicolaus Copernicus'
+	)
+	,(
+	'Venus'
+	,6051
+	,243
+	,1610
+	,0
+	,'Galileo Galilei'
+	);
+
+/*2. Используя оператор SQL WHERE вывести записи, значение радиуса (Radius) которых находится в пределах от 3000 до 9000*/
+SELECT *
+FROM planets
+WHERE Radius BETWEEN 3000
+		AND 9000
+
+/*3. Используя оператор SQL WHERE вывести название планеты (PlanetName), год ее открытия (OpeningYear)
+и имя первооткрывателя (Opener), планет, чье название не начинается или не заканчивается на букву «s».*/
+SELECT PlanetName
+	,OpeningYear
+	,Opener
+FROM planets
+WHERE PlanetName NOT LIKE 'S%'
+	AND PlanetName NOT LIKE '%s';
+
+/*4. Используя операторы SQL WHERE  вывести записи планет, у которых 
+радиус планеты меньше 10000 и открытых (OpeningYear) после 1620.*/
+SELECT *
+FROM planets
+WHERE Radius < 10000
+	AND OpeningYear > 1620
+
+/*5. Используя операторы SQL WHERE вывести записи планет,
+названия которых начинаются с буквы «N» или заканчиваются на букву «s» и не имеющие колец.*/
+SELECT *
+FROM planets
+WHERE (
+		PlanetName LIKE 'N%'
+		OR PlanetName LIKE '%s'
+		)
+	AND HavingRings = 0
+
+/*6. С помощью оператора SQL UPDATE изменить название планеты Neptune на Pluton*/
+UPDATE planets
+SET PlanetName = 'Pluton'
+WHERE PlanetName = 'Neptune'
+
+/*7. С помощью оператора SQL UPDATE у первых трех записей таблицы изменить значение 
+наличия колец (HavingRings) на «No».*/
+UPDATE planets
+SET HavingRings = 0
+WHERE ID IN (
+		1
+		,2
+		,3
+		)
+
+/*8. С помощью оператора SQL SELECT INTO вставить записи из таблицы Planets,
+которые имеют кольца в таблицу PlanetsWithRings.*/
+UPDATE planets
+SET HavingRings = 1
+WHERE ID IN (
+		2
+		,3
+		)
+
+SELECT *
+INTO PlanetsWithRings
+FROM planets
+WHERE HavingRings = 1
+
+/*9. Вывести на экран табличку.*/
+SELECT *
+FROM planets
+
+/*10. Используя оператор DELETE удалить из таблицы записи без колец и с незаполненными полями.*/
+DELETE
+FROM planets
+WHERE HavingRings = 0
+	AND (
+		PlanetName IS NULL
+		OR Radius = 0
+		OR SunSeason = 0
+		OR OpeningYear IS NULL
+		OR Opener IS NULL
+		)
