@@ -30,8 +30,12 @@ namespace _01._04_practise
             this.AuthorList = new ObservableCollection<Author>();
             this.AuthorList.Add(new Author {  FirstName = "Mark", LastName = "Twain",
                 BirthDate = new DateTime(1835, 11, 30), Country = "USA", Language = "English", PlaceOfBirth = "Florida, Missouri",
-                IsNew = false, BooksList = new ObservableCollection<Book>() });
+                IsNew = false, BooksList = new ObservableCollection<Book>()});
+            this.AuthorList[0].BooksList.Add(new Book {Title="Tom Soyer", Date = new DateTime(2019,05,21), Cost = 52.62m });
+
             this.AuthorLV.DataContext = this.AuthorList;
+            
+           
         }
     }
 }

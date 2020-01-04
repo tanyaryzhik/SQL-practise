@@ -21,17 +21,17 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Content="First Name"></Label>
-                <Label x:Name="FirstNameLbl" Grid.Row="0" Grid.Column="1"></Label>
+                <Label x:Name="FirstNameLbl" Grid.Row="0" Grid.Column="1" Content="{Binding FirstName}"></Label>
                 <Label Grid.Row="0" Grid.Column="2" Content="Country"></Label>
-                <Label x:Name="CountryLbl" Grid.Row="0" Grid.Column="3"></Label>
+                <Label x:Name="CountryLbl" Grid.Row="0" Grid.Column="3" Content="{Binding Country}"></Label>
                 <Label Grid.Row="1" Grid.Column="0" Content="Last Name"></Label>
-                <Label x:Name="LastNameLbl" Grid.Row="1" Grid.Column="1"></Label>
+                <Label x:Name="LastNameLbl" Grid.Row="1" Grid.Column="1" Content="{Binding LastName}"></Label>
                 <Label Grid.Row="1" Grid.Column="2" Content="Language"></Label>
-                <Label x:Name="LanguageLbl" Grid.Row="1" Grid.Column="3"></Label>
+                <Label x:Name="LanguageLbl" Grid.Row="1" Grid.Column="3" Content="{Binding Language}"></Label>
                 <Label Grid.Row="2" Grid.Column="0" Content="Birth date"></Label>
-                <Label x:Name="BirthDateLbl" Grid.Row="2" Grid.Column="1"></Label>
+                <Label x:Name="BirthDateLbl" Grid.Row="2" Grid.Column="1" Content="{Binding BirthDate}"></Label>
                 <Label Grid.Row="2" Grid.Column="2" Content="Place of birth"></Label>
-                <Label x:Name="PlaceOfBirthLbl" Grid.Row="2" Grid.Column="3"></Label>
+                <Label x:Name="PlaceOfBirthLbl" Grid.Row="2" Grid.Column="3" Content="{Binding PlaceOfBirth}"></Label>
             </Grid>
         </GroupBox>
     </Grid>

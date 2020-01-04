@@ -36,10 +36,14 @@
         <ListView x:Name="AuthorLV" Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" ItemsSource="{Binding}">
 
         </ListView>
-        <local:AuthorDetailsControl Grid.Column="1" Grid.Row="1"></local:AuthorDetailsControl>
+        <local:AuthorDetailsControl x:Name="AuthorDetails" Grid.Column="1" Grid.Row="1" DataContext="{Binding ElementName=AuthorLV, Path=SelectedItem}"></local:AuthorDetailsControl>
         <Label Grid.Column="1" Grid.Row="2" Content="Books" Margin="40,5,5,5"></Label>
-        <DataGrid x:Name="BooksDG" Grid.Column="1" Grid.Row="3" >
-
+        <DataGrid x:Name="BooksDG" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding ElementName=AuthorLV, Path=SelectedItem.BooksList }" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" FontSize="15" Width="20" Binding="{Binding Path=Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Title" FontSize="15" Width="120" Binding="{Binding Path=Title}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Date" FontSize="15" Width="250" Binding="{Binding Path=Date}"></DataGridTextColumn>
+            </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal">
             <Button Width="70" Height="20" Margin="5" Content="New"></Button>
