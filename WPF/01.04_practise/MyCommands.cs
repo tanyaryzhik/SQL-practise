@@ -9,12 +9,10 @@ namespace _01._04_practise
 {
     public static class MyCommands
     {
-        public static RoutedCommand Show { get; set; }
-
+        public static RoutedCommand Change { get; set; }
         static MyCommands()
         {
-            MyCommands.Show = new RoutedCommand(nameof(Show), typeof(MainWindow));
+            MyCommands.Change = new RoutedCommand(nameof(Change), typeof(MainWindow));
         }
-
     }
 }

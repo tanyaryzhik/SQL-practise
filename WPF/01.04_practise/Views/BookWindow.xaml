@@ -22,10 +22,10 @@
         <Label Grid.Row="1" Grid.Column="0"  Content="Title" ></Label>
         <Label Grid.Row="2" Grid.Column="0"  Content="Cost" ></Label>
         <Label Grid.Row="3" Grid.Column="0"  Content="Date" ></Label>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="5"></TextBox>
-        <DatePicker Grid.Row="3" Grid.Column="1" Margin="5"></DatePicker>
-        <Button Grid.Row="4" Grid.Column="0" Margin="5" Width="50" Content="OK"></Button>
-        <Button Grid.Row="4" Grid.Column="1" Margin="5" Width="50" Content="Cancel"></Button>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Title}"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding Cost}"></TextBox>
+        <DatePicker Grid.Row="3" Grid.Column="1" Margin="5" SelectedDate="{Binding Date}"></DatePicker>
+        <Button Grid.Row="4" Grid.Column="0" Margin="5" Width="50" Content="OK" Command="OK"></Button>
+        <Button Grid.Row="4" Grid.Column="1" Margin="5" Width="50" Content="Cancel" Command="Cancel"></Button>
     </Grid>
 </Window>

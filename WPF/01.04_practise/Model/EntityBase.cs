@@ -11,11 +11,11 @@ namespace _01._04_practise.Model
         public int Id { get; set; }
         public bool IsNew { get; set; }
 
-        private int counter;
+        private static int counter;
 
         public EntityBase()
         {
-            this.Id = this.counter++;
+            this.Id = counter++;
         }
 
         public void Save()

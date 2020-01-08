@@ -3,9 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:_01._04_practise.Views"
+        xmlns:local="clr-namespace:_01._04_practise"
+        xmlns:views="clr-namespace:_01._04_practise.Views"
+        xmlns:model="clr-namespace:_01._04_practise.Model"
+
         mc:Ignorable="d"
         Title="MainWindow" Height="550" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="New"
+                        Executed="NewCommand_Executed"></CommandBinding>
+        <CommandBinding Command="Delete"
+                        Executed="DeleteCommand_Executed"
+                        CanExecute="GeneralCommand_CanExecute"></CommandBinding>
+        <CommandBinding Command="local:MyCommands.Change"
+                        Executed="ChangeCommand_Executed"
+                        CanExecute="GeneralCommand_CanExecute"></CommandBinding>
+    </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="79*"></ColumnDefinition>
@@ -22,21 +35,21 @@
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
             <Menu>
                 <MenuItem Header="File">
-                    <MenuItem Header="New Author"></MenuItem>
-                    <MenuItem Header="New Book"></MenuItem>
-                    <MenuItem Header="Remove Author"></MenuItem>
-                    <MenuItem Header="Remove Book"></MenuItem>
+                    <MenuItem x:Name="NewAuthorMenu" Header="New Author" Command="New"></MenuItem>
+                    <MenuItem x:Name="NewBookMenu" Header="New Book" Command="New"></MenuItem>
+                    <MenuItem x:Name="DeleteAuthorMenu" Header="Remove Author" Command="Delete"></MenuItem>
+                    <MenuItem x:Name="DeleteBookMenu" Header="Remove Book" Command="Delete"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Edit">
-                    <MenuItem Header="Edit Author"></MenuItem>
-                    <MenuItem Header="Edit Book"></MenuItem>
+                    <MenuItem x:Name="ChangeAuthorMenu" Header="Edit Author" Command="local:MyCommands.Change"></MenuItem>
+                    <MenuItem x:Name="ChangeBookMenu" Header="Edit Book" Command="local:MyCommands.Change"></MenuItem>
                 </MenuItem>
             </Menu>
         </StackPanel>
         <ListView x:Name="AuthorLV" Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" ItemsSource="{Binding}">
 
         </ListView>
-        <local:AuthorDetailsControl x:Name="AuthorDetails" Grid.Column="1" Grid.Row="1" DataContext="{Binding ElementName=AuthorLV, Path=SelectedItem}"></local:AuthorDetailsControl>
+        <views:AuthorDetailsControl x:Name="AuthorDetails" Grid.Column="1" Grid.Row="1" DataContext="{Binding ElementName=AuthorLV, Path=SelectedItem}"></views:AuthorDetailsControl>
         <Label Grid.Column="1" Grid.Row="2" Content="Books" Margin="40,5,5,5"></Label>
         <DataGrid x:Name="BooksDG" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding ElementName=AuthorLV, Path=SelectedItem.BooksList }" AutoGenerateColumns="False">
             <DataGrid.Columns>
@@ -46,9 +59,9 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal">
-            <Button Width="70" Height="20" Margin="5" Content="New"></Button>
-            <Button Width="70" Height="20" Margin="5" Content="Change"></Button>
-            <Button Width="70" Height="20" Margin="5" Content="Delete"></Button>
+            <Button x:Name="NewBookButton" Width="70" Height="20" Margin="5" Content="New" Command="New"></Button>
+            <Button x:Name="ChangeBookButton" Width="70" Height="20" Margin="5" Content="Change" Command="local:MyCommands.Change"></Button>
+            <Button x:Name="DeleteBookButton" Width="70" Height="20" Margin="5" Content="Delete" Command="Delete"></Button>
         </StackPanel>
         <Separator VerticalAlignment="Top" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2">
             <Separator.RenderTransform>
@@ -56,9 +69,9 @@
             </Separator.RenderTransform>
         </Separator>
         <StackPanel Grid.Column="0" Grid.Row="5" Orientation="Horizontal">
-            <Button Width="70" Height="20" Margin="5" Content="New"></Button>
-            <Button Width="70" Height="20" Margin="5" Content="Change"></Button>
-            <Button Width="70" Height="20" Margin="5" Content="Delete"></Button>
+            <Button x:Name="NewAuthorButton" Width="70" Height="20" Margin="5" Content="New" Command="New"></Button>
+            <Button x:Name="ChangeAuthorButton" Width="70" Height="20" Margin="5" Content="Change" Command="local:MyCommands.Change"></Button>
+            <Button x:Name="DeleteAuthorButton" Width="70" Height="20" Margin="5" Content="Delete" Command="Delete"></Button>
         </StackPanel>
     </Grid>
 </Window>

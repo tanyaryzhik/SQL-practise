@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace _01._04_practise.Model
 {
-    public class Book : EntityBase
+    public enum Language
     {
-        public string Title { get; set; }
-        public decimal Cost { get; set; }
-        public DateTime Date { get; set; }
-
+        English = 0,
+        Russian = 1,
+        Ukrainian = 2
     }
 }

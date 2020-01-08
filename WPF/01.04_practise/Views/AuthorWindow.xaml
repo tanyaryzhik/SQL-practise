@@ -3,9 +3,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:_01._04_practise.Views"
+        xmlns:model="clr-namespace:_01._04_practise.Model"
+        xmlns:tools="clr-namespace:_01._04_practise.Tools"
         mc:Ignorable="d"
-        Title="AuthorWindow" Height="350" Width="400">
+        Title="AuthorWindow" Height="350" Width="400"  Background="{Binding Language,Converter={StaticResource LanguageToColorConverter}}">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="countryFromEnum" MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="model:Country"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="languageFromEnum" MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="model:Language"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <tools:IsNewToTextConverter x:Key="IsNewConverter"></tools:IsNewToTextConverter>
+        <tools:LanguageToColorConverter x:Key="LanguageToColorConverter"></tools:LanguageToColorConverter>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -21,20 +40,21 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Author" HorizontalAlignment="Center"></Label>
+        <Label Grid.Row="0" Grid.Column="0"  Content="{Binding IsNew, Converter={StaticResource IsNewConverter}}" HorizontalAlignment="Right"></Label>
+        <Label Grid.Row="0" Grid.Column="1"  Content="Author" HorizontalAlignment="Left"></Label>
         <Label Grid.Row="1" Grid.Column="0"  Content="First name" ></Label>
         <Label Grid.Row="2" Grid.Column="0"  Content="Last name" ></Label>
         <Label Grid.Row="3" Grid.Column="0"  Content="Birth date" ></Label>
         <Label Grid.Row="4" Grid.Column="0"  Content="Country" ></Label>
         <Label Grid.Row="5" Grid.Column="0"  Content="Language" ></Label>
         <Label Grid.Row="6" Grid.Column="0"  Content="Place of birth" ></Label>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="1" Margin="5"></TextBox>
-        <DatePicker Grid.Row="3" Grid.Column="1" Margin="5"></DatePicker>
-        <ComboBox Grid.Row="4" Grid.Column="1" Margin="5"></ComboBox>
-        <ComboBox Grid.Row="5" Grid.Column="1" Margin="5"></ComboBox>
-        <TextBox Grid.Row="6" Grid.Column="1" Margin="5"></TextBox>
-        <Button Grid.Row="7" Grid.Column="0" Margin="5" Width="50" Content="OK"></Button>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding FirstName}"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding LastName}" ></TextBox>
+        <DatePicker Grid.Row="3" Grid.Column="1" Margin="5" SelectedDate="{Binding BirthDate}"></DatePicker>
+        <ComboBox Grid.Row="4" Grid.Column="1" Margin="5" ItemsSource="{Binding Source={StaticResource countryFromEnum}}" SelectedItem="{Binding Country}"></ComboBox>
+        <ComboBox Grid.Row="5" Grid.Column="1" Margin="5" ItemsSource="{Binding Source={StaticResource languageFromEnum}}" SelectedItem="{Binding Language}"></ComboBox>
+        <TextBox Grid.Row="6" Grid.Column="1" Margin="5" Text="{Binding PlaceOfBirth}"></TextBox>
+        <Button Grid.Row="7" Grid.Column="0" Margin="5" Width="50" Content="OK" ></Button>
         <Button Grid.Row="7" Grid.Column="1" Margin="5" Width="50" Content="Cancel"></Button>
     </Grid>
 </Window>

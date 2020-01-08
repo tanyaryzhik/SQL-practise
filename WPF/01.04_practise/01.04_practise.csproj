@@ -55,10 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Country.cs" />
+    <Compile Include="Model\Language.cs" />
     <Compile Include="Model\Author.cs" />
     <Compile Include="Model\Book.cs" />
     <Compile Include="Model\EntityBase.cs" />
     <Compile Include="MyCommands.cs" />
+    <Compile Include="Tools\IsNewToTextConverter.cs" />
+    <Compile Include="Tools\LanguageToColorConverter.cs" />
     <Compile Include="Views\AuthorDetailsControl.xaml.cs">
       <DependentUpon>AuthorDetailsControl.xaml</DependentUpon>
     </Compile>
@@ -119,8 +123,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tools\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

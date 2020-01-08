@@ -23,5 +23,10 @@ namespace _01._04_practise.Views
         {
             InitializeComponent();
         }
+
+        private void Ok_Button_Click(object sender, RoutedEventArgs e)
+        {
+            //this.Owner.DataContext
+        }
     }
 }
