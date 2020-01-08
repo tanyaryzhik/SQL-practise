@@ -15,10 +15,10 @@ namespace _01._04_practise.Tools
             if ((bool)value)
             {
                 {
-                    return "New";
+                    return "Edit";
                 }
             }
-            return "Edit";
+            return "New";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

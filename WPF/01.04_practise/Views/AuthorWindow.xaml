@@ -8,7 +8,7 @@
         xmlns:model="clr-namespace:_01._04_practise.Model"
         xmlns:tools="clr-namespace:_01._04_practise.Tools"
         mc:Ignorable="d"
-        Title="AuthorWindow" Height="350" Width="400"  Background="{Binding Language,Converter={StaticResource LanguageToColorConverter}}">
+        Title="AuthorWindow" Height="350" Width="400" >
     <Window.Resources>
         <ObjectDataProvider x:Key="countryFromEnum" MethodName="GetValues"
                         ObjectType="{x:Type sys:Enum}">
@@ -25,7 +25,7 @@
         <tools:IsNewToTextConverter x:Key="IsNewConverter"></tools:IsNewToTextConverter>
         <tools:LanguageToColorConverter x:Key="LanguageToColorConverter"></tools:LanguageToColorConverter>
     </Window.Resources>
-    <Grid>
+    <Grid Background="{Binding Language,Converter={StaticResource LanguageToColorConverter}}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>

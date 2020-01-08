@@ -25,7 +25,7 @@
         <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Title}"></TextBox>
         <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding Cost}"></TextBox>
         <DatePicker Grid.Row="3" Grid.Column="1" Margin="5" SelectedDate="{Binding Date}"></DatePicker>
-        <Button Grid.Row="4" Grid.Column="0" Margin="5" Width="50" Content="OK" Command="OK"></Button>
-        <Button Grid.Row="4" Grid.Column="1" Margin="5" Width="50" Content="Cancel" Command="Cancel"></Button>
+        <Button Grid.Row="4" Grid.Column="0" Margin="5" Width="50" Content="OK" ></Button>
+        <Button Grid.Row="4" Grid.Column="1" Margin="5" Width="50" Content="Cancel"></Button>
     </Grid>
 </Window>
