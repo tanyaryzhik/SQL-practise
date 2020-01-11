@@ -16,6 +16,7 @@ namespace _01._04_practise.Model
         public EntityBase()
         {
             this.Id = counter++;
+            this.IsNew = true;
         }
 
         public void Save()

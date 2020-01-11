@@ -25,7 +25,7 @@ namespace _01._04_practise
     public partial class MainWindow : Window
     {
         public ObservableCollection<Author> AuthorList { get; set; }
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -40,8 +40,8 @@ namespace _01._04_practise
                 PlaceOfBirth = "Florida, Missouri",
                 IsNew = false,
                 BooksList = new ObservableCollection<Book>()
-            }); 
-            this.AuthorList[0].BooksList.Add(new Book { Title = "Tom Soyer", Date = new DateTime(2019, 05, 21), Cost = 52.62m });
+            });
+            this.AuthorList[0].BooksList.Add(new Book { Title = "Tom Soyer", Date = new DateTime(2019, 05, 21), Cost = 52.62m, IsNew = false });
 
             this.AuthorLV.DataContext = this.AuthorList;
 
@@ -63,7 +63,8 @@ namespace _01._04_practise
                 authorWindow.ShowDialog();
                 if (!authorWindow.DialogResult.Value)
                     return;
-
+                author.IsNew = false;
+                author.BooksList = new ObservableCollection<Book>();
                 this.AuthorList.Add(author);
             }
             else if (fe.Name == "NewBookButton" || fe.Name == "NewBookMenu")
@@ -76,8 +77,7 @@ namespace _01._04_practise
                     return;
 
                 var selectedAuthor = this.AuthorLV.SelectedItem as Author;
-                if (selectedAuthor.BooksList == null)
-                    selectedAuthor.BooksList = new ObservableCollection<Book>();
+                book.IsNew = false;
                 selectedAuthor.BooksList.Add(book);
                 this.BooksDG.Items.Refresh();
             }
@@ -102,17 +102,41 @@ namespace _01._04_practise
             FrameworkElement fe = e.Source as FrameworkElement;
             if (fe.Name == "ChangeAuthorButton" || fe.Name == "ChangeAuthorMenu")
             {
-                Author author = new Author();
+                Author author = this.AuthorLV.SelectedItem as Author;
+                Author tempAuthor = new Author
+                {
+                    FirstName = author.FirstName,
+                    LastName = author.LastName,
+                    BirthDate = author.BirthDate,
+                    Country = author.Country,
+                    Language = author.Language,
+                    PlaceOfBirth = author.PlaceOfBirth
+                };
                 var authorWindow = new AuthorWindow() { DataContext = author };
                 authorWindow.Owner = this;
                 authorWindow.ShowDialog();
+                if (authorWindow.DialogResult.Value)
+                    return;
+                author.FirstName = tempAuthor.FirstName;
+                author.LastName = tempAuthor.LastName;
+                author.BirthDate = tempAuthor.BirthDate;
+                author.Country = tempAuthor.Country;
+                author.Language = tempAuthor.Language;
+                author.PlaceOfBirth = tempAuthor.PlaceOfBirth;
             }
             else if (fe.Name == "ChangeBookButton" || fe.Name == "ChangeBookMenu")
             {
-                Book book = new Book();
+                Book book = this.BooksDG.SelectedItem as Book;
+                Book tempBook = new Book { Title = book.Title, Cost = book.Cost, Date = book.Date };
                 var bookWindow = new BookWindow() { DataContext = book };
                 bookWindow.Owner = this;
                 bookWindow.ShowDialog();
+                if (bookWindow.DialogResult.Value)
+                    return;
+                book.Title = tempBook.Title;
+                book.Cost = tempBook.Cost;
+                book.Date = tempBook.Date;
+                this.BooksDG.Items.Refresh();
             }
         }
 

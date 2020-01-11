@@ -35,14 +35,11 @@
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
             <Menu>
                 <MenuItem Header="File">
-                    <MenuItem x:Name="NewAuthorMenu" Header="New Author" Command="New"></MenuItem>
-                    <MenuItem x:Name="NewBookMenu" Header="New Book" Command="New"></MenuItem>
-                    <MenuItem x:Name="DeleteAuthorMenu" Header="Remove Author" Command="Delete"></MenuItem>
-                    <MenuItem x:Name="DeleteBookMenu" Header="Remove Book" Command="Delete"></MenuItem>
+                    <MenuItem x:Name="NewMenu" Header="New" Command="New"></MenuItem>
+                    <MenuItem x:Name="DeleteMenu" Header="Remove" Command="Delete"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Edit">
-                    <MenuItem x:Name="ChangeAuthorMenu" Header="Edit Author" Command="local:MyCommands.Change"></MenuItem>
-                    <MenuItem x:Name="ChangeBookMenu" Header="Edit Book" Command="local:MyCommands.Change"></MenuItem>
+                    <MenuItem x:Name="ChangeMenu" Header="Edit" Command="local:MyCommands.Change"></MenuItem>
                 </MenuItem>
             </Menu>
         </StackPanel>
@@ -56,6 +53,8 @@
                 <DataGridTextColumn Header="Id" FontSize="15" Width="20" Binding="{Binding Path=Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Title" FontSize="15" Width="120" Binding="{Binding Path=Title}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Date" FontSize="15" Width="250" Binding="{Binding Path=Date}"></DataGridTextColumn>
+                <DataGridComboBoxColumn Header="Language" Width="100"></DataGridComboBoxColumn>
+                <DataGridCheckBoxColumn Header="Read"></DataGridCheckBoxColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal">
