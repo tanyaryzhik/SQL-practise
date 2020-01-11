@@ -44,18 +44,12 @@ namespace _01._04_practise
             this.AuthorList[0].BooksList.Add(new Book { Title = "Tom Soyer", Date = new DateTime(2019, 05, 21), Cost = 52.62m, IsNew = false });
 
             this.AuthorLV.DataContext = this.AuthorList;
-
-
-
-
         }
-
-
 
         private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             FrameworkElement fe = e.Source as FrameworkElement;
-            if (fe.Name == "NewAuthorButton" || fe.Name == "NewAuthorMenu")
+            if (fe.Name == "NewAuthorButton" || fe.Name == "AuthorLV")
             {
                 Author author = new Author();
                 var authorWindow = new AuthorWindow() { DataContext = author };
@@ -67,7 +61,7 @@ namespace _01._04_practise
                 author.BooksList = new ObservableCollection<Book>();
                 this.AuthorList.Add(author);
             }
-            else if (fe.Name == "NewBookButton" || fe.Name == "NewBookMenu")
+            else if (fe.Name == "NewBookButton" || fe.Name == "BooksDG")
             {
                 Book book = new Book();
                 var bookWindow = new BookWindow() { DataContext = book };
@@ -86,11 +80,11 @@ namespace _01._04_practise
         private void DeleteCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             FrameworkElement fe = e.Source as FrameworkElement;
-            if (this.AuthorLV.SelectedItem != null && (fe.Name == "DeleteAuthorButton" || fe.Name == "DeleteAuthorMenu"))
+            if (this.AuthorLV.SelectedItem != null && (fe.Name == "DeleteAuthorButton" || fe.Name == "AuthorLV"))
             {
                 this.AuthorList.Remove(this.AuthorLV.SelectedItem as Author);
             }
-            else if (this.BooksDG.SelectedItem != null && (fe.Name == "DeleteBookButton" || fe.Name == "DeleteBookMenu"))
+            else if (this.BooksDG.SelectedItem != null && (fe.Name == "DeleteBookButton" || fe.Name == "BooksDG"))
             {
                 var selectedAuthor = this.AuthorLV.SelectedItem as Author;
                 selectedAuthor.BooksList.Remove(this.BooksDG.SelectedItem as Book);
@@ -100,7 +94,7 @@ namespace _01._04_practise
         private void ChangeCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             FrameworkElement fe = e.Source as FrameworkElement;
-            if (fe.Name == "ChangeAuthorButton" || fe.Name == "ChangeAuthorMenu")
+            if (fe.Name == "ChangeAuthorButton" || fe.Name == "AuthorLV")
             {
                 Author author = this.AuthorLV.SelectedItem as Author;
                 Author tempAuthor = new Author
@@ -124,7 +118,7 @@ namespace _01._04_practise
                 author.Language = tempAuthor.Language;
                 author.PlaceOfBirth = tempAuthor.PlaceOfBirth;
             }
-            else if (fe.Name == "ChangeBookButton" || fe.Name == "ChangeBookMenu")
+            else if (fe.Name == "ChangeBookButton" || fe.Name == "BooksDG")
             {
                 Book book = this.BooksDG.SelectedItem as Book;
                 Book tempBook = new Book { Title = book.Title, Cost = book.Cost, Date = book.Date };
@@ -147,7 +141,5 @@ namespace _01._04_practise
             else
                 e.CanExecute = false;
         }
-
-
     }
 }

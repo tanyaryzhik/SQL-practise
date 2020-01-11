@@ -44,7 +44,6 @@
             </Menu>
         </StackPanel>
         <ListView x:Name="AuthorLV" Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" ItemsSource="{Binding}">
-
         </ListView>
         <views:AuthorDetailsControl x:Name="AuthorDetails" Grid.Column="1" Grid.Row="1" DataContext="{Binding ElementName=AuthorLV, Path=SelectedItem}"></views:AuthorDetailsControl>
         <Label Grid.Column="1" Grid.Row="2" Content="Books" Margin="40,5,5,5"></Label>

@@ -23,12 +23,10 @@ namespace _01._04_practise.Views
         {
             InitializeComponent();
         }
-
         private void CancelCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             this.DialogResult = false;
         }
-
         private void OkCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             this.DialogResult = true;

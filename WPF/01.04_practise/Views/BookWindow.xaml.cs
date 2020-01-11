@@ -28,7 +28,6 @@ namespace _01._04_practise.Views
             this.DialogResult = false;
             this.Close();
         }
-
         private void OkCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             this.DialogResult = true;
