@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        xmlns:local="clr-namespace:_01._04_practise.Views"
+        xmlns:local="clr-namespace:_01._04_practise"
+        xmlns:viewsl="clr-namespace:_01._04_practise.Views"
         xmlns:model="clr-namespace:_01._04_practise.Model"
         xmlns:tools="clr-namespace:_01._04_practise.Tools"
         mc:Ignorable="d"
@@ -25,6 +26,12 @@
         <tools:IsNewToTextConverter x:Key="IsNewConverter"></tools:IsNewToTextConverter>
         <tools:LanguageToColorConverter x:Key="LanguageToColorConverter"></tools:LanguageToColorConverter>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="local:MyCommands.Ok"
+                        Executed="OkCommand_Executed"></CommandBinding>
+        <CommandBinding Command="local:MyCommands.Cancel"
+                        Executed="CancelCommand_Executed"></CommandBinding>
+    </Window.CommandBindings>
     <Grid Background="{Binding Language,Converter={StaticResource LanguageToColorConverter}}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -54,7 +61,7 @@
         <ComboBox Grid.Row="4" Grid.Column="1" Margin="5" ItemsSource="{Binding Source={StaticResource countryFromEnum}}" SelectedItem="{Binding Country}"></ComboBox>
         <ComboBox Grid.Row="5" Grid.Column="1" Margin="5" ItemsSource="{Binding Source={StaticResource languageFromEnum}}" SelectedItem="{Binding Language}"></ComboBox>
         <TextBox Grid.Row="6" Grid.Column="1" Margin="5" Text="{Binding PlaceOfBirth}"></TextBox>
-        <Button Grid.Row="7" Grid.Column="0" Margin="5" Width="50" Content="OK" ></Button>
-        <Button Grid.Row="7" Grid.Column="1" Margin="5" Width="50" Content="Cancel"></Button>
+        <Button Grid.Row="7" Grid.Column="0" Margin="5" Width="50" Content="OK" Command="local:MyCommands.Ok" ></Button>
+        <Button Grid.Row="7" Grid.Column="1" Margin="5" Width="50" Content="Cancel" Command="local:MyCommands.Cancel"></Button>
     </Grid>
 </Window>

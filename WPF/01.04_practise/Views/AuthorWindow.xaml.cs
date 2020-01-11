@@ -24,9 +24,15 @@ namespace _01._04_practise.Views
             InitializeComponent();
         }
 
-        private void Ok_Button_Click(object sender, RoutedEventArgs e)
+        private void CancelCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            //this.Owner.DataContext
+            this.DialogResult = false;
+        }
+
+        private void OkCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.DialogResult = true;
+            this.Close();
         }
     }
 }
