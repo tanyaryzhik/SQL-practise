@@ -3,12 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:_01._04_practise"
         xmlns:views="clr-namespace:_01._04_practise.Views"
         xmlns:model="clr-namespace:_01._04_practise.Model"
-
+        xmlns:tools="clr-namespace:_01._04_practise.Tools"
         mc:Ignorable="d"
         Title="MainWindow" Height="550" Width="800">
+    <Window.Resources>
+                <ObjectDataProvider x:Key="languageFromEnum" MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="model:Language"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+         <tools:LanguageToColorConverter x:Key="LanguageToColorConverter"></tools:LanguageToColorConverter>
+    </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="New"
                         Executed="NewCommand_Executed"></CommandBinding>
@@ -51,9 +61,21 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" FontSize="15" Width="20" Binding="{Binding Path=Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Title" FontSize="15" Width="120" Binding="{Binding Path=Title}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Date" FontSize="15" Width="250" Binding="{Binding Path=Date}"></DataGridTextColumn>
-                <DataGridComboBoxColumn Header="Language" Width="100"></DataGridComboBoxColumn>
-                <DataGridCheckBoxColumn Header="Read"></DataGridCheckBoxColumn>
+                <!--<DataGridTextColumn Header="Date" FontSize="15" Width="250" Binding="{Binding Path=Date}"></DataGridTextColumn>-->
+                <DataGridTemplateColumn Header="Date" Width="250">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Date}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Date}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridComboBoxColumn Header="Language" Width="100" SelectedItemBinding="{Binding Language}" ItemsSource="{Binding Source={StaticResource languageFromEnum}}"></DataGridComboBoxColumn>
+                <DataGridCheckBoxColumn Header="Read" Binding="{Binding IsRead}"></DataGridCheckBoxColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal">

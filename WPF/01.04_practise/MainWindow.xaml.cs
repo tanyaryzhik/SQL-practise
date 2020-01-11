@@ -41,7 +41,8 @@ namespace _01._04_practise
                 IsNew = false,
                 BooksList = new ObservableCollection<Book>()
             });
-            this.AuthorList[0].BooksList.Add(new Book { Title = "Tom Soyer", Date = new DateTime(2019, 05, 21), Cost = 52.62m, IsNew = false });
+            this.AuthorList[0].BooksList.Add(new Book { Title = "Tom Soyer", Date = new DateTime(2019, 05, 21),
+                Cost = 52.62m, IsNew = false, Language = Model.Language.English, IsRead = true });
 
             this.AuthorLV.DataContext = this.AuthorList;
         }

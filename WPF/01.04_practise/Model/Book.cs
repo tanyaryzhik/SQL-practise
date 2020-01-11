@@ -11,6 +11,7 @@ namespace _01._04_practise.Model
         public string Title { get; set; }
         public decimal Cost { get; set; }
         public DateTime Date { get; set; }
-
+        public Language Language { get; set; }
+        public bool IsRead { get; set; }
     }
 }
