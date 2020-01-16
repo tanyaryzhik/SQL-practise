@@ -63,11 +63,11 @@
                 <DataGridTextColumn Header="Title" FontSize="15" Width="120" Binding="{Binding Path=Title}"></DataGridTextColumn>
                 <!--<DataGridTextColumn Header="Date" FontSize="15" Width="250" Binding="{Binding Path=Date}"></DataGridTextColumn>-->
                 <DataGridTemplateColumn Header="Date" Width="250">
-                    <DataGridTemplateColumn.CellTemplate>
+                    <!--<DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Date}" />
                         </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn.CellTemplate>-->
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <DatePicker SelectedDate="{Binding Date}" />
