@@ -36,13 +36,13 @@ namespace Practise._12._28.a
         private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             this.Employees.Add(new Emloyee { ID = Emloyee.counter++ });
-
         }
+
         private void DeleteCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-
             this.Employees.Remove(this.employeesGrid.SelectedItem as Emloyee);
         }
+
         private void ShowCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             new EmployeeData { DataContext = this.employeesGrid.SelectedItem as Emloyee }.Show();
@@ -50,12 +50,10 @@ namespace Practise._12._28.a
 
         private void Command_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            
                 if (this.employeesGrid.SelectedItem != null)
                     e.CanExecute = true;
                 else
                     e.CanExecute = false;
-            
         }
     }
 
@@ -82,6 +80,5 @@ namespace Practise._12._28.a
         {
             MyCommands.Show = new RoutedCommand(nameof(Show), typeof(MainWindow));
         }
-
     }
 }
