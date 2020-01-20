@@ -28,13 +28,16 @@ namespace _2020._01._18.ViewModel
 
         private bool GetCommandCanExecute(object obj)
         {
-            return this.Employees == null;
+            return this.Employees.Count == 0;
         }
 
         private void GetCommandExecute(object obj)
         {
-            var empCollection= new ObservableCollection<Employee>();
-            Ge
+            var empCollection = GetEmployees();
+            foreach (var item in empCollection)
+            {
+                this.Employees.Add(item);
+            }
         }
 
         private bool DeleteCommandCanExecute(object obj)
@@ -52,11 +55,13 @@ namespace _2020._01._18.ViewModel
             this.Employees.Add(new Employee { ID = Employee.counter++ });
         }
 
-        private void GetEmployees()
+        private ObservableCollection<Employee> GetEmployees()
         {
-            Employees.Add(new Employee { ID = 1, Name = "Alex Mann", Department = "GIS", HireDate = "2019-12-05", IsManager = true });
-            Employees.Add(new Employee { ID = 2, Name = "Mary King", Department = "Marketing", HireDate = "2005-12-24", IsManager = false });
+            ObservableCollection<Employee> employees = new ObservableCollection<Employee>();
+            employees.Add(new Employee { ID = 1, Name = "Alex Mann", Department = "GIS", HireDate = "2019-12-05", IsManager = true });
+            employees.Add(new Employee { ID = 2, Name = "Mary King", Department = "Marketing", HireDate = "2005-12-24", IsManager = false });
             Employee.counter = 3;
+            return employees;
         }
     }
 }

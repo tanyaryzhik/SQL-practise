@@ -21,7 +21,6 @@
             <RowDefinition Height="158*"></RowDefinition>
             <RowDefinition Height="42*"></RowDefinition>
         </Grid.RowDefinitions>
-
         <DataGrid x:Name="employeesGrid" AutoGenerateColumns="False" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" FontSize="15" Width="20" Binding="{Binding Path=ID}"></DataGridTextColumn>
@@ -45,6 +44,5 @@
             <Button Margin="5" Content="Delete" Width="100" Command="{Binding Delete}"></Button>
             <Button Margin="5" Content="Get" Width="100" Command="{Binding Get}"></Button>
         </StackPanel>
-
     </Grid>
 </Window>
