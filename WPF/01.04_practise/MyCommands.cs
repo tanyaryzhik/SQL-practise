@@ -14,6 +14,7 @@ namespace _01._04_practise
         public static RoutedCommand Cancel { get; set; }
 
         public static RoutedCommand Ok { get; set; }
+
         static MyCommands()
         {
             MyCommands.Change = new RoutedCommand(nameof(Change), typeof(MainWindow));

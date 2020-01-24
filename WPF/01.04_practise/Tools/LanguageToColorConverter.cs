@@ -17,11 +17,15 @@ namespace _01._04_practise.Tools
             {
                 case Model.Language.English:
                     return new SolidColorBrush(Colors.Yellow);
+
                 case Model.Language.Russian:
                     return new SolidColorBrush(Colors.Red);
+
                 case Model.Language.Ukrainian:
                     return new SolidColorBrush(Colors.Blue);
-                default: return new SolidColorBrush(Colors.Transparent);
+
+                default:
+                    return new SolidColorBrush(Colors.Transparent);
             }
         }
 

@@ -50,15 +50,18 @@ namespace _01._04_practise
         private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             FrameworkElement fe = e.Source as FrameworkElement;
+
             if (fe.Name == "NewAuthorButton" || fe.Name == "AuthorLV")
             {
                 Author author = new Author();
                 var authorWindow = new AuthorWindow() { DataContext = author };
                 authorWindow.Owner = this;
                 authorWindow.ShowDialog();
+
                 if (!authorWindow.DialogResult.Value)
                     return;
-                author.IsNew = false;
+
+                author.Save();
                 author.BooksList = new ObservableCollection<Book>();
                 this.AuthorList.Add(author);
             }
@@ -68,11 +71,12 @@ namespace _01._04_practise
                 var bookWindow = new BookWindow() { DataContext = book };
                 bookWindow.Owner = this;
                 bookWindow.ShowDialog();
+
                 if (!bookWindow.DialogResult.Value)
                     return;
 
                 var selectedAuthor = this.AuthorLV.SelectedItem as Author;
-                book.IsNew = false;
+                book.Save();
                 selectedAuthor.BooksList.Add(book);
                 this.BooksDG.Items.Refresh();
             }
@@ -81,6 +85,7 @@ namespace _01._04_practise
         private void DeleteCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             FrameworkElement fe = e.Source as FrameworkElement;
+
             if (this.AuthorLV.SelectedItem != null && (fe.Name == "DeleteAuthorButton" || fe.Name == "AuthorLV"))
             {
                 this.AuthorList.Remove(this.AuthorLV.SelectedItem as Author);
@@ -95,6 +100,7 @@ namespace _01._04_practise
         private void ChangeCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             FrameworkElement fe = e.Source as FrameworkElement;
+
             if (fe.Name == "ChangeAuthorButton" || fe.Name == "AuthorLV")
             {
                 Author author = this.AuthorLV.SelectedItem as Author;
@@ -110,8 +116,10 @@ namespace _01._04_practise
                 var authorWindow = new AuthorWindow() { DataContext = author };
                 authorWindow.Owner = this;
                 authorWindow.ShowDialog();
+
                 if (authorWindow.DialogResult.Value)
                     return;
+
                 author.FirstName = tempAuthor.FirstName;
                 author.LastName = tempAuthor.LastName;
                 author.BirthDate = tempAuthor.BirthDate;
@@ -126,8 +134,10 @@ namespace _01._04_practise
                 var bookWindow = new BookWindow() { DataContext = book };
                 bookWindow.Owner = this;
                 bookWindow.ShowDialog();
+
                 if (bookWindow.DialogResult.Value)
                     return;
+
                 book.Title = tempBook.Title;
                 book.Cost = tempBook.Cost;
                 book.Date = tempBook.Date;

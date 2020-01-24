@@ -22,6 +22,4 @@ namespace _01._04_practise.Model
             return $"{this.FirstName} {this.LastName}";
         }
     }
-
-
 }
