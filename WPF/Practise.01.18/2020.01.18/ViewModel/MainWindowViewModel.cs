@@ -3,6 +3,7 @@ using _2020._01._18.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,21 @@ using System.Windows.Input;
 
 namespace _2020._01._18.ViewModel
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Employee> Employees { get; set; }
+        private ObservableCollection<Employee> employees;
+        public ObservableCollection<Employee> Employees
+        {
+            get { return this.employees; }
+            set
+            {
+                if (this.employees == value)
+                    return;
+
+                this.employees = value;
+                this.OnPropertyChanged(nameof(this.Employees));
+            }
+        }
         public Employee SelectedEmployee { get; set; }
         public ICommand New { get; set; }
         public ICommand Delete { get; set; }
@@ -26,6 +39,16 @@ namespace _2020._01._18.ViewModel
             this.Get = new RelayCommand(GetCommandExecute, GetCommandCanExecute);
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged is null)
+                return;
+
+            this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         private bool GetCommandCanExecute(object obj)
         {
             return this.Employees.Count == 0;
@@ -33,11 +56,11 @@ namespace _2020._01._18.ViewModel
 
         private void GetCommandExecute(object obj)
         {
-            var empCollection = GetEmployees();
-            foreach (var item in empCollection)
-            {
-                this.Employees.Add(item);
-            }
+            this.Employees = GetEmployees();
+            //foreach (var item in empCollection)
+            //{
+            //    this.Employees.Add(item);
+            //}
         }
 
         private bool DeleteCommandCanExecute(object obj)
@@ -65,26 +88,3 @@ namespace _2020._01._18.ViewModel
         }
     }
 }
-
-//private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-//{
-//    this.Employees.Add(new Emloyee { ID = Emloyee.counter++ });
-//}
-
-//private void DeleteCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-//{
-//    this.Employees.Remove(this.employeesGrid.SelectedItem as Emloyee);
-//}
-
-//private void ShowCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-//{
-//    new EmployeeData { DataContext = this.employeesGrid.SelectedItem as Emloyee }.Show();
-//}
-
-//private void Command_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-//{
-//    if (this.employeesGrid.SelectedItem != null)
-//        e.CanExecute = true;
-//    else
-//        e.CanExecute = false;
-//}
