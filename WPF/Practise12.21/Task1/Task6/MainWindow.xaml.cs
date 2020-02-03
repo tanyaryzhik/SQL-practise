@@ -23,8 +23,19 @@ namespace Task6
         public MainWindow()
         {
             InitializeComponent();
-            List<Emloyee> emloyees = new List<Emloyee>();
-            emloyees.Add(new Emloyee { ID = 1, Name = "Alex Kotoff", Department = "Gis", HireDate = new DateTime(2008, 3, 1, 7, 0, 0), IsManager = true });
+            List<Emloyee> emloyees = new List<Emloyee> { new Emloyee {
+                ID = 1,
+                Name = "Alex Kotoff", 
+                Department = "Gis", 
+                HireDate = new DateTime(2008, 3, 1),
+                IsManager = true },
+            new Emloyee {
+                ID = 2,
+                Name = "Norma Ginne", 
+                Department = "Marketing", 
+                HireDate = new DateTime(2010, 5, 12),
+                IsManager = false }};
+            
             this.DataContext = emloyees;
         }
     }
