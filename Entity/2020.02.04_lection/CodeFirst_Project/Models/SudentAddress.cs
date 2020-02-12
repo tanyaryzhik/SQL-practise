@@ -15,7 +15,7 @@ namespace CodeFirst_Project.Models
         public string Country { get; set; }
 
         
-        public int StudentId { get; set; }
+        public int AddressOfStudentId { get; set; }
         public Student Student { get; set; }
     }
 }

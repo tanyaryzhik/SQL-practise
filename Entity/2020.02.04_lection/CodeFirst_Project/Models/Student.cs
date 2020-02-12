@@ -9,14 +9,17 @@ namespace CodeFirst_Project.Models
     public class Student
     {
        
-        public int StudentId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
-        public int GradeId { get; set; }
+        public int CurrentGradeId { get; set; }
         public Grade Grade { get; set; }
 
-        [ForeignKey("Standart")]
-        public int StandartRefId { get; set; }
-        public Standart Standart { get; set; }
+        public StudentAddress Address { get; set; }
+        public IList<StudentCourse> StudentCourses { get; set; }
+
+        //[ForeignKey("Standart")]
+        //public int StandartRefId { get; set; }
+        //public Standart Standart { get; set; }
     }
 }
