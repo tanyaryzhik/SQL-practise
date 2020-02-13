@@ -11,7 +11,7 @@ namespace CodeFirst_Project.Models
         public string GradeName { get; set; }
         public string Section { get; set; }
 
-        public ICollection<Student> Students { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
 
     }
 }

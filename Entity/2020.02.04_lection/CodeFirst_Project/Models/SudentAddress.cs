@@ -16,6 +16,6 @@ namespace CodeFirst_Project.Models
 
         
         public int AddressOfStudentId { get; set; }
-        public Student Student { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

@@ -11,6 +11,6 @@ namespace CodeFirst_Project.Models
 
         public string Description { get; set; }
 
-        public IList<StudentCourse> StudentCourses { get; set; }
+        public virtual IList<StudentCourse> StudentCourses { get; set; }
     }
 }

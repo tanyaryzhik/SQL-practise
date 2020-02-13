@@ -9,6 +9,6 @@ namespace CodeFirst_Project.Models
         public int StandartId { get; set; }
         public string StandartName { get; set; }
 
-        public ICollection<Student> Students { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

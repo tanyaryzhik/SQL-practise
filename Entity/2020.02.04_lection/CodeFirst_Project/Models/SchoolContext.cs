@@ -17,7 +17,9 @@ namespace CodeFirst_Project.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Database=StudentsDB;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Database=StudentsDB;Trusted_Connection=True;")
+                          .UseLazyLoadingProxies();
+                
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

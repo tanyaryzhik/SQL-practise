@@ -13,10 +13,10 @@ namespace CodeFirst_Project.Models
         public string Name { get; set; }
 
         public int CurrentGradeId { get; set; }
-        public Grade Grade { get; set; }
+        public virtual Grade Grade { get; set; }
 
-        public StudentAddress Address { get; set; }
-        public IList<StudentCourse> StudentCourses { get; set; }
+        public virtual StudentAddress Address { get; set; }
+        public virtual IList<StudentCourse> StudentCourses { get; set; }
 
         //[ForeignKey("Standart")]
         //public int StandartRefId { get; set; }
