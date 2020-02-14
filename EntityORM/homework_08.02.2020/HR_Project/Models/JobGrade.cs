@@ -9,7 +9,7 @@ namespace HR_Project.Models
     public class JobGrade
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [StringLength(2)]
         public string GradeLevel { get; set; }
 

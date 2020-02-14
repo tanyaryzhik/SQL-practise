@@ -9,7 +9,7 @@ namespace HR_Project.Models
     public class Job
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [StringLength(10)]
         public string JobId { get; set; }
 
@@ -17,5 +17,8 @@ namespace HR_Project.Models
         public string JobTitle { get; set; }
         public decimal MaxSalary { get; set; }
         public decimal MinSalary { get; set; }
+
+        public ICollection<Employee> Employees { get; set; }
+        public ICollection<JobHistory> JobHistories { get; set; }
     }
 }

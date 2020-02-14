@@ -24,7 +24,12 @@ namespace HR_Project.Models
         [StringLength(12)]
         public string MyPropStateProvinceerty { get; set; }
 
+        [Column(TypeName = "nvarchar")]
         [StringLength(2)]
         public string CountryId { get; set; }
+
+        public Country Country { get; set; }
+
+        public ICollection<Department> Departments { get; set; }
     }
 }

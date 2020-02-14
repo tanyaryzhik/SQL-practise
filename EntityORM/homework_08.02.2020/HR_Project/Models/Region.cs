@@ -14,5 +14,7 @@ namespace HR_Project.Models
 
         [StringLength(25)]
         public string RegionName { get; set; }
+
+        public ICollection<Country> Countries { get; set; }
     }
 }
