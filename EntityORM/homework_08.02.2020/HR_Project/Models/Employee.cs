@@ -23,15 +23,20 @@ namespace HR_Project.Models
 
         [StringLength(20)]
         public string PhoneNumber { get; set; }
+
         public DateTime HireDate { get; set; }
 
         [StringLength(10)]
         public string JobId { get; set; }
 
         public Job Job { get; set; }
+
         public decimal Salary { get; set; }
+
         public int CommissionPct { get; set; }
+
         public int ManagerId { get; set; }
+
         public int DepartmentId { get; set; }
 
         public Department Department { get; set; }

@@ -14,7 +14,9 @@ namespace HR_Project.Models
 
         [StringLength(30)]
         public string DepartmentName { get; set; }
+
         public int ManagerId { get; set; }
+
         public int LocationId { get; set; }
 
         public Location Location { get; set; }
