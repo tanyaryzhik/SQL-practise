@@ -16,7 +16,7 @@ namespace HR_Project.Models
 
         public DateTime EndDate { get; set; }
 
-        [StringLength(10)]
+        [MaxLength(10)]
         public string JobId { get; set; }
 
         public Job Job { get; set; }

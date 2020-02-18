@@ -9,7 +9,7 @@ namespace HR_Project.Models
     public class Job
     {
         [Key]
-        [StringLength(10)]
+        [MaxLength(10)]
         public string JobId { get; set; }
 
         [StringLength(35)]

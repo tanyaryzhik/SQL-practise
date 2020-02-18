@@ -9,7 +9,7 @@ namespace HR_Project.Models
     public class JobGrade
     {
         [Key]
-        [StringLength(2)]
+        [MaxLength(2)]
         public string GradeLevel { get; set; }
 
         public decimal LowestSalary { get; set; }

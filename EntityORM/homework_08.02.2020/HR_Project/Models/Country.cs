@@ -9,7 +9,7 @@ namespace HR_Project.Models
     public class Country
     {
         [Key]
-        [StringLength(2)]
+        [MaxLength(2)]
         public string CountryId { get; set; }
 
         [StringLength(40)]

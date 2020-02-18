@@ -12,7 +12,7 @@ namespace HR_Project.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RegiontId { get; set; }
 
-        [StringLength(25)]
+        [MaxLength(25)]
         public string RegionName { get; set; }
 
         public ICollection<Country> Countries { get; set; }

@@ -12,20 +12,19 @@ namespace HR_Project.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LocationId { get; set; }
 
-        [StringLength(25)]
+        [MaxLength(25)]
         public string StreetAddress { get; set; }
 
-        [StringLength(12)]
+        [MaxLength(12)]
         public string PostalCode { get; set; }
 
-        [StringLength(30)]
+        [MaxLength(30)]
         public string City { get; set; }
 
-        [StringLength(12)]
+        [MaxLength(12)]
         public string MyPropStateProvinceerty { get; set; }
 
-        [Column(TypeName = "nvarchar")]
-        [StringLength(2)]
+        [MaxLength(2)]
         public string CountryId { get; set; }
 
         public Country Country { get; set; }
