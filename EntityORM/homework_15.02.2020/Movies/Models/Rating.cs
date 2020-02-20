@@ -9,10 +9,13 @@ namespace Movies.Models
         public int MovieId { get; set; }
 
         public Movie Movie { get; set; }
+
         public int ReviewerId { get; set; }
 
         public Reviewer Reviewer { get; set; }
+
         public int ReviewStars { get; set; }
+
         public int NumberOfReviews { get; set; }
     }
 }
