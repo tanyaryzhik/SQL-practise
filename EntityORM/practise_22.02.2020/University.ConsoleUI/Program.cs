@@ -25,7 +25,46 @@ namespace University.ConsoleUI
             //DisplayCollection(students);
             //DeleteStudent(students);
             //DeleteCourse(courses);
-            DeleteDepartment(departments);
+            //DeleteDepartment(departments);
+            UpdateStudent(students);
+            UpdateCourse(courses);
+            UpdateDepartment(departments);
+        }
+
+        private static void UpdateDepartment(IEnumerable<Department> departments)
+        {
+            Console.WriteLine("Input department's ID you want to update");
+            Int32.TryParse(Console.ReadLine(), out int inputedId);
+            var depToUpd = departments.ToList().Find(d => d.Id == inputedId);
+            Console.WriteLine($"Department name is {depToUpd.Name}. Input new name");
+            depToUpd.Name = Console.ReadLine();
+            unitOfWork.DepartmentRepos.Update(depToUpd);
+            unitOfWork.Save();
+        }
+
+        private static void UpdateCourse(IEnumerable<Course> courses)
+        {
+            Console.WriteLine("Input courses's ID you want to update");
+            Int32.TryParse(Console.ReadLine(), out int inputedId);
+            var courseToUpd = courses.ToList().Find(c => c.Id == inputedId);
+            Console.WriteLine($"Course name is {courseToUpd.Name}. Input new name");
+            courseToUpd.Name = Console.ReadLine();
+            unitOfWork.CourseRepos.Update(courseToUpd);
+            unitOfWork.Save();
+        }
+
+        private static void UpdateStudent(IEnumerable<Student> students)
+        {
+            Console.WriteLine("Input student's ID you want to update");
+            Int32.TryParse(Console.ReadLine(), out int inputedId);
+            var studentToUpd = students.ToList().Find(c => c.Id == inputedId);
+            Console.WriteLine($"Student first name is {studentToUpd.FirstName} and last name is {studentToUpd.LastName}." +
+                $" Input new first name");
+            studentToUpd.FirstName = Console.ReadLine();
+            Console.WriteLine($"Input new last name");
+            studentToUpd.LastName = Console.ReadLine();
+            unitOfWork.StudentRepos.Update(studentToUpd);
+            unitOfWork.Save();
         }
 
         private static void DeleteDepartment(IEnumerable<Department> departments)
@@ -44,7 +83,7 @@ namespace University.ConsoleUI
             unitOfWork.Save();
         }
 
-        private static void ChooseCollectionToWork(IEnumerable<Student> students, IEnumerable<Course> courses, IEnumerable<Department> departments)
+        private static void ChooseCollectionToDisplay(IEnumerable<Student> students, IEnumerable<Course> courses, IEnumerable<Department> departments)
         {
             Console.WriteLine("Choose entity to work with, Students - s, Courses - c, Departments - d");
             string result = Console.ReadLine();
