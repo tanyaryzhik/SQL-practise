@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +27,14 @@ namespace University.ConsoleUI
             //DeleteStudent(students);
             //DeleteCourse(courses);
             //DeleteDepartment(departments);
-            UpdateStudent(students);
-            UpdateCourse(courses);
-            UpdateDepartment(departments);
+            //UpdateStudent(students);
+            //UpdateCourse(courses);
+            //UpdateDepartment(departments);
+
+            var name = "Tim";
+            var context = new UniverDbContext();
+            //var stud = context.Students.FromSqlRaw($"GetSudents {name}").ToList();
+            var rowsAffected = context.Database.ExecuteSqlRaw("Update Students set FirstName = 'Bill' where Id = 1");
         }
 
         private static void UpdateDepartment(IEnumerable<Department> departments)
