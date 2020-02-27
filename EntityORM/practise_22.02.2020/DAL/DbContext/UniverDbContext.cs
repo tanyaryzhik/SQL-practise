@@ -20,7 +20,12 @@ namespace University.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            var allEntries = modelBuilder.Model.GetEntityTypes();
+            foreach (var entity in allEntries)
+            {
+                entity.AddProperty("CreatedDate", typeof(DateTime));
+                entity.AddProperty("UpdatedDate", typeof(DateTime));
+            }
         }
     }
 }
