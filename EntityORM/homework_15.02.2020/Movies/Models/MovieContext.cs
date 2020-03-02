@@ -143,6 +143,11 @@ namespace Movies.Models
             modelBuilder.Entity<MovieDirection>().HasKey(md => new { md.MovieId, md.DirectorId });
 
             modelBuilder.Entity<Rating>().HasKey(r => new { r.MovieId, r.ReviewerId });
+
+            //One to many.
+            modelBuilder.Entity<MovieDirection>().HasOne(md => md.Director)
+                .WithMany(d => d.MovieDirections)
+                .HasForeignKey(md => md.DirectorId);
         }
     }
 }
