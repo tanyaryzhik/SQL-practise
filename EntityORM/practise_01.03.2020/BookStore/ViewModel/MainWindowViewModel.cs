@@ -64,19 +64,15 @@ namespace BookStore.ViewModel
 
         public ICommand AddCommand { get; set; }
         public ICommand SaveCommand { get; set; }
-        private GenericRepositry<Car> repository;
 
+        private GenericRepositry<Car> repository;
 
         public MainWindowViewModel()
         {
-            //this.Cars = Helper.GetCars();
-            //this.DefaultCar = Helper.GetDefaultCar();
-            
             this.RemoveCommand = new RelayCommand(RemoveCommandExecute, GeneralCommandCanExecute);
             this.ResetCommand = new RelayCommand(ResetCommandExecute, GeneralCommandCanExecute);
             this.AddCommand = new RelayCommand(AddCommandExecute);
             this.SaveCommand = new RelayCommand(SaveCommandExecute);
-
             this.repository = new GenericRepositry<Car>();
             this.Cars = new ObservableCollection<Car>(repository.Get());
         }
@@ -103,6 +99,7 @@ namespace BookStore.ViewModel
             this.Cars.Remove(this.SelectedCar);
             this.repository.Save();
         }
+
         private void SaveCommandExecute(object obj)
         {
             this.repository.Save();
@@ -122,7 +119,6 @@ namespace BookStore.ViewModel
             });
             this.Cars.Add(addedCar);
             this.repository.Add(addedCar);
-    
         }
 
         protected virtual void OnPropertyChanged(string propertyName)

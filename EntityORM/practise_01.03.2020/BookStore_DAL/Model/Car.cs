@@ -8,6 +8,7 @@ namespace BookStore_DAL.Model
     public class Car : INotifyPropertyChanged
     {
         public int Id { get; set; }
+
         private string brand;
         public string Brand
         {
@@ -52,7 +53,6 @@ namespace BookStore_DAL.Model
         }
 
         private decimal price;
-
         public decimal Price
         {
             get { return this.price; }
@@ -67,7 +67,6 @@ namespace BookStore_DAL.Model
         }
 
         private string country;
-
         public string Country
         {
             get { return this.country; }
@@ -82,7 +81,6 @@ namespace BookStore_DAL.Model
         }
 
         private string color;
-
         public string Color
         {
             get { return this.color; }
@@ -97,7 +95,6 @@ namespace BookStore_DAL.Model
         }
 
         private string engineType;
-
         public string EngineType
         {
             get { return this.engineType; }
