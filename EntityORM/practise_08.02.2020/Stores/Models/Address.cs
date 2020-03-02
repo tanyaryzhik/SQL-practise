@@ -9,11 +9,11 @@ namespace Stores.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
         public string City { get; set; }
 
         public string Street { get; set; }
 
         public string Zip { get; set; }
-
     }
 }

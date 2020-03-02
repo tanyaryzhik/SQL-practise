@@ -9,6 +9,7 @@ namespace Stores.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -20,6 +21,5 @@ namespace Stores.Models
         public ICollection<Order> Orders { get; set; }
 
         public ICollection<Address> Addresses { get; set; }
-
     }
 }

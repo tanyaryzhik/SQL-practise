@@ -9,6 +9,7 @@ namespace Stores.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
         public string Name { get; set; }
 
         public string Phone { get; set; }
@@ -16,6 +17,5 @@ namespace Stores.Models
         public string WebSite { get; set; }
 
         public ICollection<Customer> Customers { get; set; }
-
     }
 }

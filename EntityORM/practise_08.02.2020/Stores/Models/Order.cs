@@ -9,6 +9,7 @@ namespace Stores.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
         public DateTime OrderDate { get; set; }
 
         public DateTime DeliveryDate { get; set; }
@@ -23,11 +24,9 @@ namespace Stores.Models
 
         public string DeliveryZip { get; set; }
 
-
         public int OrderStatusId { get; set; }
         public OrderStatus OrderStatus { get; set; }
 
         public ICollection<OrderItem> OrderItems { get; set; }
-
     }
 }
