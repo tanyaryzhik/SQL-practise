@@ -31,7 +31,7 @@ namespace University.ConsoleUI
             //UpdateCourse(courses);
             //UpdateDepartment(departments);
 
-            var name = "Tim";
+            //var name = "Tim";
             var context = new UniverDbContext();
             //var stud = context.Students.FromSqlRaw($"GetSudents {name}").ToList();
             var rowsAffected = context.Database.ExecuteSqlRaw("Update Students set FirstName = 'Bill' where Id = 1");

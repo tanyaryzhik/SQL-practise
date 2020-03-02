@@ -10,10 +10,12 @@ namespace University.DAL.Repositories
     public class StudentRepository : IStudentRepository, IDisposable
     {
         private UniverDbContext univerDbContext;
+
         public StudentRepository(UniverDbContext context)
         {
             this.univerDbContext = context;
         }
+
         public void DeleteStudent(int studentId)
         {
             Student student = univerDbContext.Students.SingleOrDefault(s => s.Id == studentId);
@@ -21,7 +23,9 @@ namespace University.DAL.Repositories
                 return;
             univerDbContext.Students.Remove(student);
         }
+
         private bool disposed = false;
+
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)

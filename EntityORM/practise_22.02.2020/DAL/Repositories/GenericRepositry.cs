@@ -9,8 +9,8 @@ namespace University.DAL.Repositories
 {
     public class GenericRepositry<TEntity> where TEntity : class
     {
-        internal UniverDbContext context;
-        internal DbSet<TEntity> dbSet;
+        private UniverDbContext context;
+        private DbSet<TEntity> dbSet;
         public GenericRepositry(UniverDbContext context)
         {
             this.context = context;
@@ -58,6 +58,7 @@ namespace University.DAL.Repositories
             TEntity entToDel = dbSet.Find(id);
             Delete(entToDel);
         }
+
         public virtual void Delete(TEntity entToDel)
         {
             if (context.Entry(entToDel).State == EntityState.Detached)
