@@ -12,7 +12,7 @@ namespace HR_Project.Models
         [MaxLength(10)]
         public string JobId { get; set; }
 
-        [StringLength(35)]
+        [MaxLength(35)]
         public string JobTitle { get; set; }
 
         public decimal MaxSalary { get; set; }

@@ -12,7 +12,7 @@ namespace HR_Project.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DepartmentId { get; set; }
 
-        [StringLength(30)]
+        [MaxLength(30)]
         public string DepartmentName { get; set; }
 
         public int ManagerId { get; set; }

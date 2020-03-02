@@ -12,7 +12,7 @@ namespace HR_Project.Models
         [MaxLength(2)]
         public string CountryId { get; set; }
 
-        [StringLength(40)]
+        [MaxLength(40)]
         public string CountryName { get; set; }
 
         public int RegionId { get; set; }

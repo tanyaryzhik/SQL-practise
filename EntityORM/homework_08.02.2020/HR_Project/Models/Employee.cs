@@ -12,21 +12,21 @@ namespace HR_Project.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EmployeeId { get; set; }
 
-        [StringLength(20)]
+        [MaxLength(20)]
         public string FirstName { get; set; }
 
-        [StringLength(25)]
+        [MaxLength(25)]
         public string LastName { get; set; }
 
-        [StringLength(25)]
+        [MaxLength(25)]
         public string Email { get; set; }
 
-        [StringLength(20)]
+        [MaxLength(20)]
         public string PhoneNumber { get; set; }
 
         public DateTime HireDate { get; set; }
 
-        [StringLength(10)]
+        [MaxLength(10)]
         public string JobId { get; set; }
 
         public Job Job { get; set; }
