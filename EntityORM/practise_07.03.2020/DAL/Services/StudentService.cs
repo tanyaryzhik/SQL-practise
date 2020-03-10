@@ -8,7 +8,6 @@ using MvvmExample.Model;
 namespace MvvmExample.DAL.Services
 {
     public class StudentService : IStudentService
-
     {
         private StudentDbContext context;
         public StudentService()
@@ -18,7 +17,9 @@ namespace MvvmExample.DAL.Services
         
         public IEnumerable<Student> GetStudents()
         {
-            return context.Students;
+            return this.context.Students
+                .Include(s => s.Books)
+                .Include(s => s.Address);
         }
 
         public void SaveStudents(IEnumerable<Student> students)
@@ -29,15 +30,6 @@ namespace MvvmExample.DAL.Services
         public void RemoveStudent(Student student)
         {
             context.Students.Remove(student);
-        }
-
-        public void LoadBooksAdrs(int studentId)
-        {
-            context.Students
-                .Where(s => s.Id == studentId)
-                .Include(s => s.Books)
-                .Include(s => s.Address)
-                .FirstOrDefault();
         }
     }
 }

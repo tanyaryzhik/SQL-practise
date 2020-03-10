@@ -15,10 +15,5 @@ namespace DAL.Model
 
         public int SudentId { get; set; }
         public Student Student { get; set; }
-
-        public override string ToString()
-        {
-            return $"{Street}, {City}, {Country}, {PostalCode}";
-        }
     }
 }

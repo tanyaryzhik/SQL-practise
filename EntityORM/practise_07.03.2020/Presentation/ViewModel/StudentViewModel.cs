@@ -38,11 +38,6 @@ namespace Presentation.ViewModel
         private void ExecuteGetStudents()
         {
             Students = studentService.GetStudents().ToObservableCollection();
-            foreach (var item in Students)
-            {
-                studentService.LoadBooksAdrs(item.Id);
-            }
-          
         }
 
         private void ExecuteRemoveStudent()

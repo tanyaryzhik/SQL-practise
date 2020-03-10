@@ -9,7 +9,5 @@ namespace MvvmExample.DAL.Services
         void SaveStudents(IEnumerable<Student> students);
 
         void RemoveStudent(Student student);
-
-        public void LoadBooksAdrs(int studentId);
     }
 }
