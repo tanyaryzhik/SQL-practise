@@ -20,50 +20,50 @@ namespace Presentation.ViewModel
             this.studentService = studentService;
             Students = new ObservableCollection<Student>();
 
-            GetStudentsCommmand = new DelegateCommand.DelegateCommand(ExecuteGetStudents);
-            SaveStudentsCommand = new DelegateCommand.DelegateCommand(ExecuteSaveStudents, GeneralCanExecute);
-            RemoveStudentCommand = new DelegateCommand.DelegateCommand(ExecuteRemoveStudent, GeneralCanExecute);
+            GetStudentsCommmand = new DelegateCommand.DelegateCommand(this.ExecuteGetStudents);
+            SaveStudentsCommand = new DelegateCommand.DelegateCommand(this.ExecuteSaveStudents, this.GeneralCanExecute);
+            RemoveStudentCommand = new DelegateCommand.DelegateCommand(this.ExecuteRemoveStudent, this.GeneralCanExecute);
         }
 
         private bool GeneralCanExecute()
         {
-            return selectedStudent != null;
+            return this.selectedStudent != null;
         }
 
         private void ExecuteSaveStudents()
         {
-            studentService.SaveStudents(Students);
+            this.studentService.SaveStudents();
         }
 
         private void ExecuteGetStudents()
         {
-            Students = studentService.GetStudents().ToObservableCollection();
+            Students = this.studentService.GetStudents().ToObservableCollection();
         }
 
         private void ExecuteRemoveStudent()
         {
-            studentService.RemoveStudent(selectedStudent);
-            ExecuteSaveStudents();
-            ExecuteGetStudents();
+            this.studentService.RemoveStudent(this.selectedStudent);
+            this.ExecuteSaveStudents();
+            this.ExecuteGetStudents();
         }
 
         public ObservableCollection<Student> Students
         {
-            get { return students; }
+            get { return this.students; }
             set
             {
-                students = value;
-                OnPropertyChanged();
+                this.students = value;
+                this.OnPropertyChanged();
             }
         }
 
         public Student SelectedStudent
         {
-            get { return selectedStudent; }
+            get { return this.selectedStudent; }
             set
             {
-                selectedStudent = value;
-                OnPropertyChanged();
+                this.selectedStudent = value;
+                this.OnPropertyChanged();
             }
         }
 

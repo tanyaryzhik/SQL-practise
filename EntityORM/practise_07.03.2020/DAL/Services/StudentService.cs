@@ -22,14 +22,14 @@ namespace MvvmExample.DAL.Services
                 .Include(s => s.Address);
         }
 
-        public void SaveStudents(IEnumerable<Student> students)
+        public void SaveStudents()
         {
-            context.SaveChanges();
+             this.context.SaveChanges();
         }
 
         public void RemoveStudent(Student student)
         {
-            context.Students.Remove(student);
+            this.context.Students.Remove(student);
         }
     }
 }
