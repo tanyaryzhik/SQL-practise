@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreProject", "StoreProject.csproj", "{D6ED5F54-ACCB-42AF-AAC6-25B89814CBAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "..\Model\Model.csproj", "{39F7B885-F36C-468C-ABB6-85840CE08FB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "..\ViewModel\ViewModel.csproj", "{CEE56368-7273-40B4-BFA2-454EA0CC89D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6ED5F54-ACCB-42AF-AAC6-25B89814CBAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6ED5F54-ACCB-42AF-AAC6-25B89814CBAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6ED5F54-ACCB-42AF-AAC6-25B89814CBAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6ED5F54-ACCB-42AF-AAC6-25B89814CBAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39F7B885-F36C-468C-ABB6-85840CE08FB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39F7B885-F36C-468C-ABB6-85840CE08FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39F7B885-F36C-468C-ABB6-85840CE08FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39F7B885-F36C-468C-ABB6-85840CE08FB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEE56368-7273-40B4-BFA2-454EA0CC89D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEE56368-7273-40B4-BFA2-454EA0CC89D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEE56368-7273-40B4-BFA2-454EA0CC89D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEE56368-7273-40B4-BFA2-454EA0CC89D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D8B9396-A64D-4622-A0CB-491B5669A475}
+	EndGlobalSection
+EndGlobal
