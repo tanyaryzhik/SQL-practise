@@ -367,6 +367,7 @@ namespace Model
                     StoreId = 8,
                     StaffId = 11
                 });
+
             modelBuilder.Entity<OrderItem>().HasData(
                 new OrderItem
                 {
