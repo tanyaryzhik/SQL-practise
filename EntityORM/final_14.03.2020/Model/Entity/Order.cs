@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace Model.Entity
@@ -24,5 +25,7 @@ namespace Model.Entity
         public int StaffId { get; set; }
 
         public Staff Staff { get; set; }
+
+        public ObservableCollection<OrderItem> OrderItems { get; set; }
     }
 }

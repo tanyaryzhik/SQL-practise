@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace Model.Entity
@@ -16,5 +17,11 @@ namespace Model.Entity
         public int ModelYear { get; set; }
 
         public decimal Price { get; set; }
+
+        public ObservableCollection<Stock> Stocks { get; set; }
+
+        public ObservableCollection<OrderItem> OrderItems { get; set; }
+
+
     }
 }

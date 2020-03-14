@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace Model.Entity
@@ -14,5 +15,10 @@ namespace Model.Entity
         public string City { get; set; }
         public string State { get; set; }
         public int ZipCode { get; set; }
+
+        public ObservableCollection<Staff> Staffs { get; set; }
+        public ObservableCollection<Order> Orders { get; set; }
+
+        public ObservableCollection<Stock> Stocks { get; set; }
     }
 }

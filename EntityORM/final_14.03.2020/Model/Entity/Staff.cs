@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace Model.Entity
@@ -19,5 +20,7 @@ namespace Model.Entity
         public int? ManagerId { get; set; }
 
         public Staff Manager { get; set; }
+
+        public ObservableCollection<Order> Orders { get; set; }
     }
 }
