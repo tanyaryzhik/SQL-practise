@@ -219,6 +219,171 @@ namespace Model
             modelBuilder.Entity<Category>()
                 .Property(p => p.Name)
                 .HasColumnName("category_name");
-         }
+            //DataSeeding.
+            modelBuilder.Entity<Brand>().HasData(
+                new Brand
+                {
+                    Id = 1,
+                    Name = "BrandFirst"
+                },
+                new Brand
+                {
+                    Id = 2,
+                    Name = "BrandSecond"
+                });
+            modelBuilder.Entity<Category>().HasData(
+                new Category
+                {
+                    Id = 3,
+                    Name = "CategoryFirst"
+                },
+                new Category
+                {
+                    Id = 4,
+                    Name = "CategorySecond"
+                });
+            modelBuilder.Entity<Product>().HasData(
+                new Product
+                {
+                    Id = 5,
+                    Name = "ProductFirst",
+                    BrandId = 1,
+                    CategoryId = 3,
+                    ModelYear = 2000,
+                    Price = 200.50m
+                },
+                new Product
+                {
+                    Id = 6,
+                    Name = "ProductSecond",
+                    BrandId = 2,
+                    CategoryId = 4,
+                    ModelYear = 2010,
+                    Price = 400.50m
+                });
+            modelBuilder.Entity<Store>().HasData(
+                new Store
+                {
+                    Id = 7,
+                    StoretName = "StoreFirst",
+                    Phone = "12345",
+                    Email = "firststore@gmail.com",
+                    Street = "1st Ave",
+                    City = "New York",
+                    State = "WashingtonDC",
+                    ZipCode = 25364
+                },
+                new Store
+                {
+                    Id = 8,
+                    StoretName = "StoreSecond",
+                    Phone = "678910",
+                    Email = "secondstore@gmail.com",
+                    Street = "2nd Ave",
+                    City = "Dallas",
+                    State = "Texas",
+                    ZipCode = 52147
+                });
+            modelBuilder.Entity<Stock>().HasData(
+                new Stock
+                {
+                    StoreId = 7,
+                    ProductId = 6,
+                    Quantity = 5
+                },
+                new Stock
+                {
+                    StoreId = 8,
+                    ProductId = 5,
+                    Quantity = 10
+                });
+            modelBuilder.Entity<Customer>().HasData(
+                new Customer
+                {
+                    Id = 9,
+                    FirstName = "Allan",
+                    LastName = "Pau",
+                    Phone = "54698",
+                    Email = "allanpau@gmail.com",
+                    Street = "3rd St",
+                    City = "Akron",
+                    State = "Ohio",
+                    ZipCode = 25641
+                },
+                new Customer
+                {
+                    Id = 10,
+                    FirstName = "Katy",
+                    LastName = "Perry",
+                    Phone = "25489",
+                    Email = "katyperry@gmail.com",
+                    Street = "4th St",
+                    City = "Los Angeles",
+                    State = "California",
+                    ZipCode = 26543
+                });
+            modelBuilder.Entity<Staff>().HasData(
+                new Staff
+                {
+                    Id = 11,
+                    FirstName = "Jim",
+                    LastName = "Kerry",
+                    Phone = "2598",
+                    Email = "jimkerry@gmail.com",
+                    Active = true,
+                    StoreId = 7,
+                    ManagerId = 12
+                },
+                new Staff
+                {
+                    Id = 12,
+                    FirstName = "Katy",
+                    LastName = "lerry",
+                    Phone = "3654",
+                    Email = "katylerry@gmail.com",
+                    Active = true,
+                    StoreId = 8,
+                });
+            modelBuilder.Entity<Order>().HasData(
+                new Order
+                {
+                    Id = 13,
+                    CustomerId = 10,
+                    OrderStatus = "Pending",
+                    OrderDate = DateTime.Now,
+                    RequiredDate = DateTime.Now,
+                    ShippedDate = DateTime.Now,
+                    StoreId = 7,
+                    StaffId = 12
+                },
+                new Order
+                {
+                    Id = 14,
+                    CustomerId = 9,
+                    OrderStatus = "Pending",
+                    OrderDate = DateTime.Now,
+                    RequiredDate = DateTime.Now,
+                    ShippedDate = DateTime.Now,
+                    StoreId = 8,
+                    StaffId = 11
+                });
+            modelBuilder.Entity<OrderItem>().HasData(
+                new OrderItem
+                {
+                    OrderId = 13,
+                    ProductId = 5,
+                    Quantity = 1,
+                    Price = 52m,
+                    Discount = 0
+                },
+                 new OrderItem
+                 {
+                     OrderId = 14,
+                     ProductId = 6,
+                     Quantity = 1,
+                     Price = 100m,
+                     Discount = 0
+                 });
+        }
     }
 }
