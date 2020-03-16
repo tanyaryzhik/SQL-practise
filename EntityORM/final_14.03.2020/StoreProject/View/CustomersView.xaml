@@ -20,5 +20,25 @@
         <ListView Grid.Column="0"
                   ItemsSource="{Binding Customers}"
                   SelectedItem="{Binding SelectedCustomer}"/>
+        <StackPanel Grid.Column="1"
+                    DataContext="{Binding SelectedCustomer}"
+                    Orientation="Vertical">
+            <Label Content="First name"/>
+            <TextBox Text="{Binding FirstName}"/>
+            <Label Content="Last name"/>
+            <TextBox Text="{Binding LastName}"/>
+            <Label Content="Phone"/>
+            <TextBox Text="{Binding Phone}"/>
+            <Label Content="Email"/>
+            <TextBox Text="{Binding Email}"/>
+            <Label Content="Steet"/>
+            <TextBox Text="{Binding Street}"/>
+            <Label Content="City"/>
+            <TextBox Text="{Binding City}"/>
+            <Label Content="State"/>
+            <TextBox Text="{Binding State}"/>
+            <Label Content="Zip code"/>
+            <TextBox Text="{Binding ZipCode}"/>
+        </StackPanel>
     </Grid>
 </UserControl>
