@@ -26,5 +26,10 @@ namespace Model.Entity
         public int ZipCode { get; set; }
 
         public ObservableCollection<Order> Orders { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.FirstName} {this.LastName}\r\n{this.Email}";
+        }
     }
 }
