@@ -10,8 +10,8 @@ using Model;
 namespace Model.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20200314120418_InitStoresDB")]
-    partial class InitStoresDB
+    [Migration("20200316153855_CreateNewStoreDb")]
+    partial class CreateNewStoreDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,9 +29,9 @@ namespace Model.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Name")
+                    b.Property<string>("Name")
                         .HasColumnName("brand_name")
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -46,9 +46,9 @@ namespace Model.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Name")
+                    b.Property<string>("Name")
                         .HasColumnName("category_name")
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -112,7 +112,7 @@ namespace Model.Migrations
                         .HasColumnName("customer_id")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("OrderDate")
+                    b.Property<DateTime?>("OrderDate")
                         .HasColumnName("order_date")
                         .HasColumnType("datetime2");
 
@@ -120,11 +120,11 @@ namespace Model.Migrations
                         .HasColumnName("order_status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RequiredDate")
+                    b.Property<DateTime?>("RequiredDate")
                         .HasColumnName("required_date")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ShippedDate")
+                    b.Property<DateTime?>("ShippedDate")
                         .HasColumnName("shipped_date")
                         .HasColumnType("datetime2");
 

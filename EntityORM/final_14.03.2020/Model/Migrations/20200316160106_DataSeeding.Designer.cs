@@ -10,8 +10,8 @@ using Model;
 namespace Model.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20200314130449_FixDataTypesBrandAndCategory")]
-    partial class FixDataTypesBrandAndCategory
+    [Migration("20200316160106_DataSeeding")]
+    partial class DataSeeding
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,6 +36,18 @@ namespace Model.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("brands","production");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "BrandFirst"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "BrandSecond"
+                        });
                 });
 
             modelBuilder.Entity("Model.Entity.Category", b =>
@@ -53,6 +65,18 @@ namespace Model.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("categories","production");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 3,
+                            Name = "CategoryFirst"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "CategorySecond"
+                        });
                 });
 
             modelBuilder.Entity("Model.Entity.Customer", b =>
@@ -98,6 +122,32 @@ namespace Model.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("customers","sales");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 9,
+                            City = "Akron",
+                            Email = "allanpau@gmail.com",
+                            FirstName = "Allan",
+                            LastName = "Pau",
+                            Phone = "54698",
+                            State = "Ohio",
+                            Street = "3rd St",
+                            ZipCode = 25641
+                        },
+                        new
+                        {
+                            Id = 10,
+                            City = "Los Angeles",
+                            Email = "katyperry@gmail.com",
+                            FirstName = "Katy",
+                            LastName = "Perry",
+                            Phone = "25489",
+                            State = "California",
+                            Street = "4th St",
+                            ZipCode = 26543
+                        });
                 });
 
             modelBuilder.Entity("Model.Entity.Order", b =>
@@ -112,7 +162,7 @@ namespace Model.Migrations
                         .HasColumnName("customer_id")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("OrderDate")
+                    b.Property<DateTime?>("OrderDate")
                         .HasColumnName("order_date")
                         .HasColumnType("datetime2");
 
@@ -120,11 +170,11 @@ namespace Model.Migrations
                         .HasColumnName("order_status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RequiredDate")
+                    b.Property<DateTime?>("RequiredDate")
                         .HasColumnName("required_date")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ShippedDate")
+                    b.Property<DateTime?>("ShippedDate")
                         .HasColumnName("shipped_date")
                         .HasColumnType("datetime2");
 
@@ -132,7 +182,7 @@ namespace Model.Migrations
                         .HasColumnName("staff_id")
                         .HasColumnType("int");
 
-                    b.Property<int>("StoreId")
+                    b.Property<int?>("StoreId")
                         .HasColumnName("store_id")
                         .HasColumnType("int");
 
@@ -145,6 +195,30 @@ namespace Model.Migrations
                     b.HasIndex("StoreId");
 
                     b.ToTable("orders","sales");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 13,
+                            CustomerId = 10,
+                            OrderDate = new DateTime(2020, 3, 16, 18, 1, 5, 903, DateTimeKind.Local).AddTicks(3197),
+                            OrderStatus = "Pending",
+                            RequiredDate = new DateTime(2020, 3, 16, 18, 1, 5, 906, DateTimeKind.Local).AddTicks(2979),
+                            ShippedDate = new DateTime(2020, 3, 16, 18, 1, 5, 906, DateTimeKind.Local).AddTicks(3692),
+                            StaffId = 12,
+                            StoreId = 7
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CustomerId = 9,
+                            OrderDate = new DateTime(2020, 3, 16, 18, 1, 5, 906, DateTimeKind.Local).AddTicks(5472),
+                            OrderStatus = "Pending",
+                            RequiredDate = new DateTime(2020, 3, 16, 18, 1, 5, 906, DateTimeKind.Local).AddTicks(5496),
+                            ShippedDate = new DateTime(2020, 3, 16, 18, 1, 5, 906, DateTimeKind.Local).AddTicks(5508),
+                            StaffId = 11,
+                            StoreId = 8
+                        });
                 });
 
             modelBuilder.Entity("Model.Entity.OrderItem", b =>
@@ -174,6 +248,24 @@ namespace Model.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("order_items","sales");
+
+                    b.HasData(
+                        new
+                        {
+                            OrderId = 13,
+                            ProductId = 5,
+                            Discount = 0,
+                            Price = 52m,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            OrderId = 14,
+                            ProductId = 6,
+                            Discount = 0,
+                            Price = 100m,
+                            Quantity = 1
+                        });
                 });
 
             modelBuilder.Entity("Model.Entity.Product", b =>
@@ -211,6 +303,26 @@ namespace Model.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("products","production");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 5,
+                            BrandId = 1,
+                            CategoryId = 3,
+                            ModelYear = 2000,
+                            Name = "ProductFirst",
+                            Price = 200.50m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BrandId = 2,
+                            CategoryId = 4,
+                            ModelYear = 2010,
+                            Name = "ProductSecond",
+                            Price = 400.50m
+                        });
                 });
 
             modelBuilder.Entity("Model.Entity.Staff", b =>
@@ -251,11 +363,44 @@ namespace Model.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ManagerId");
-
                     b.HasIndex("StoreId");
 
                     b.ToTable("staffs","sales");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 11,
+                            Active = true,
+                            Email = "jimkerry@gmail.com",
+                            FirstName = "Jim",
+                            LastName = "Kerry",
+                            ManagerId = 20,
+                            Phone = "2598",
+                            StoreId = 7
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Active = true,
+                            Email = "katylerry@gmail.com",
+                            FirstName = "Katy",
+                            LastName = "lerry",
+                            ManagerId = 20,
+                            Phone = "3654",
+                            StoreId = 8
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Active = true,
+                            Email = "katyJerry@gmail.com",
+                            FirstName = "Katy",
+                            LastName = "Jerry",
+                            ManagerId = 0,
+                            Phone = "3654",
+                            StoreId = 8
+                        });
                 });
 
             modelBuilder.Entity("Model.Entity.Stock", b =>
@@ -277,6 +422,20 @@ namespace Model.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("stocks","production");
+
+                    b.HasData(
+                        new
+                        {
+                            StoreId = 7,
+                            ProductId = 6,
+                            Quantity = 5
+                        },
+                        new
+                        {
+                            StoreId = 8,
+                            ProductId = 5,
+                            Quantity = 10
+                        });
                 });
 
             modelBuilder.Entity("Model.Entity.Store", b =>
@@ -318,6 +477,30 @@ namespace Model.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("stores","sales");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 7,
+                            City = "New York",
+                            Email = "firststore@gmail.com",
+                            Phone = "12345",
+                            State = "WashingtonDC",
+                            StoretName = "StoreFirst",
+                            Street = "1st Ave",
+                            ZipCode = 25364
+                        },
+                        new
+                        {
+                            Id = 8,
+                            City = "Dallas",
+                            Email = "secondstore@gmail.com",
+                            Phone = "678910",
+                            State = "Texas",
+                            StoretName = "StoreSecond",
+                            Street = "2nd Ave",
+                            ZipCode = 52147
+                        });
                 });
 
             modelBuilder.Entity("Model.Entity.Order", b =>
@@ -337,8 +520,7 @@ namespace Model.Migrations
                     b.HasOne("Model.Entity.Store", "Store")
                         .WithMany("Orders")
                         .HasForeignKey("StoreId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
                 });
 
             modelBuilder.Entity("Model.Entity.OrderItem", b =>
@@ -373,10 +555,6 @@ namespace Model.Migrations
 
             modelBuilder.Entity("Model.Entity.Staff", b =>
                 {
-                    b.HasOne("Model.Entity.Staff", "Manager")
-                        .WithMany()
-                        .HasForeignKey("ManagerId");
-
                     b.HasOne("Model.Entity.Store", "Store")
                         .WithMany("Staffs")
                         .HasForeignKey("StoreId")

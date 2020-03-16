@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Model.Migrations
 {
-    public partial class InitStoresDB : Migration
+    public partial class CreateNewStoreDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,7 +20,7 @@ namespace Model.Migrations
                 {
                     brand_id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    brand_name = table.Column<int>(nullable: false)
+                    brand_name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -34,7 +34,7 @@ namespace Model.Migrations
                 {
                     category_id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    category_name = table.Column<int>(nullable: false)
+                    category_name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -185,9 +185,9 @@ namespace Model.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     customer_id = table.Column<int>(nullable: false),
                     order_status = table.Column<string>(nullable: true),
-                    order_date = table.Column<DateTime>(nullable: false),
-                    required_date = table.Column<DateTime>(nullable: false),
-                    shipped_date = table.Column<DateTime>(nullable: false),
+                    order_date = table.Column<DateTime>(nullable: true),
+                    required_date = table.Column<DateTime>(nullable: true),
+                    shipped_date = table.Column<DateTime>(nullable: true),
                     store_id = table.Column<int>(nullable: false),
                     staff_id = table.Column<int>(nullable: false)
                 },

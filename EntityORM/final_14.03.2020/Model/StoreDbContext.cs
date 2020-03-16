@@ -6,6 +6,11 @@ namespace Model
 {
     public class StoreDbContext : DbContext
     {
+        public StoreDbContext()
+        {
+            //this.Database.EnsureDeleted();
+            //this.Database.EnsureCreated();
+        }
         public DbSet<Customer> Customers { get; set; }
 
         public DbSet<Product> Products { get; set; }
@@ -26,7 +31,7 @@ namespace Model
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Database=StoresDB;Trusted_Connection=True");
+            optionsBuilder.UseSqlServer("Database=NewStoreDB;Trusted_Connection=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -219,6 +224,7 @@ namespace Model
             modelBuilder.Entity<Category>()
                 .Property(p => p.Name)
                 .HasColumnName("category_name");
+
             //DataSeeding.
             modelBuilder.Entity<Brand>().HasData(
                 new Brand
@@ -332,7 +338,7 @@ namespace Model
                     Email = "jimkerry@gmail.com",
                     Active = true,
                     StoreId = 7,
-                    ManagerId = 12
+                    ManagerId = 20
                 },
                 new Staff
                 {
@@ -343,6 +349,18 @@ namespace Model
                     Email = "katylerry@gmail.com",
                     Active = true,
                     StoreId = 8,
+                    ManagerId = 20
+                },
+                new Staff
+                {
+                    Id = 20,
+                    FirstName = "Katy",
+                    LastName = "Jerry",
+                    Phone = "3654",
+                    Email = "katyJerry@gmail.com",
+                    Active = true,
+                    StoreId = 8,
+                    ManagerId = 0
                 });
             modelBuilder.Entity<Order>().HasData(
                 new Order
