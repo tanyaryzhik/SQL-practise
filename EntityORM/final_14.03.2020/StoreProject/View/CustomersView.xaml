@@ -12,10 +12,9 @@
     </UserControl.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
         <ListView Grid.Column="0"
                   ItemsSource="{Binding Customers}"
@@ -40,5 +39,7 @@
             <Label Content="Zip code"/>
             <TextBox Text="{Binding ZipCode}"/>
         </StackPanel>
+        <local:OrdersView Grid.Column="2"
+                          DataContext="{Binding OrdersViewModel}" />
     </Grid>
 </UserControl>

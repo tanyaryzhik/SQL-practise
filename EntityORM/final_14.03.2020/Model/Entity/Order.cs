@@ -30,5 +30,10 @@ namespace Model.Entity
         public Staff Staff { get; set; }
 
         public ObservableCollection<OrderItem> OrderItems { get; set; }
+
+        public override string ToString()
+        {
+            return $"Order: {this.Id}";
+        }
     }
 }

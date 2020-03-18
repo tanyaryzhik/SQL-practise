@@ -26,5 +26,10 @@ namespace Model.Entity
         public ObservableCollection<Stock> Stocks { get; set; }
 
         public ObservableCollection<OrderItem> OrderItems { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.Name}";
+        }
     }
 }

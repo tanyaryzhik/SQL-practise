@@ -12,6 +12,8 @@
         <TabItem Header="Admin">
             <view:CustomersView></view:CustomersView>
         </TabItem>
-        <TabItem Header="Store"></TabItem>
+        <TabItem Header="Store">
+            <view:ProductsView/>
+        </TabItem>
     </TabControl>
 </Window>
