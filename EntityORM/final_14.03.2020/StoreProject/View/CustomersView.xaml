@@ -17,11 +17,11 @@
             <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
         <ListView Grid.Column="0"
-                  ItemsSource="{Binding Customers}"
-                  SelectedItem="{Binding SelectedCustomer}"/>
+            ItemsSource="{Binding Customers}"
+            SelectedItem="{Binding SelectedCustomer}"/>
         <StackPanel Grid.Column="1"
-                    DataContext="{Binding SelectedCustomer}"
-                    Orientation="Vertical">
+             DataContext="{Binding SelectedCustomer}"
+             Orientation="Vertical">
             <Label Content="First name"/>
             <TextBox Text="{Binding FirstName}"/>
             <Label Content="Last name"/>
@@ -39,7 +39,8 @@
             <Label Content="Zip code"/>
             <TextBox Text="{Binding ZipCode}"/>
         </StackPanel>
-        <local:OrdersView Grid.Column="2"
-                          DataContext="{Binding OrdersViewModel}" />
+        <local:OrdersView 
+            Grid.Column="2"
+            DataContext="{Binding OrdersViewModel}" />
     </Grid>
 </UserControl>

@@ -15,6 +15,7 @@ namespace ViewModel
         public ObservableCollection<Customer> Customers { get; set; }
 
         private Customer selectedCustomer;
+
         public Customer SelectedCustomer
         {
             get
@@ -28,10 +29,11 @@ namespace ViewModel
                 this.selectedCustomer = value;
                 this.OnPropertyChanged(nameof(this.selectedCustomer));
                 this.OrdersViewModel = new OrdersViewModel(this.selectedCustomer.Orders);
-                //this.OrdersViewModel.Orders = new ObservableCollection<Order>(this.SelectedCustomer.Orders);
             }
         }
+
         private OrdersViewModel ordersViewModel;
+
         public OrdersViewModel OrdersViewModel
         {
             get
@@ -44,7 +46,7 @@ namespace ViewModel
                     return;
                 this.ordersViewModel = value;
                 this.OnPropertyChanged(nameof(this.ordersViewModel));
-             }
+            }
         }
 
         private StoreDbContext context;
@@ -61,6 +63,7 @@ namespace ViewModel
                 .ThenInclude(oi => oi.Product)
                 .ToList());
         }
+
         protected virtual void OnPropertyChanged(string propertyName)
         {
             if (this.PropertyChanged is null)

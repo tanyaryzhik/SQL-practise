@@ -19,5 +19,10 @@ namespace Model.Entity
         public decimal Price { get; set; }
 
         public int Discount { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.Product.Name}";
+        }
     }
 }

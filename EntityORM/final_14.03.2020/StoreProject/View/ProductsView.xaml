@@ -14,10 +14,14 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" ItemsSource="{Binding Products}"
+        <ListView Grid.Column="0"
+                  ItemsSource="{Binding Products}"
                   SelectedItem="{Binding SelectedProduct}"/>
-        <StackPanel Grid.Column="1" DataContext="{Binding SelectedProduct}">
+        <StackPanel Grid.Column="1"
+                    DataContext="{Binding SelectedProduct}"
+                    Margin="5">
             <Label Content="Product"/>
             <TextBox Text="{Binding Name}"/>
             <Label Content="Brand"/>
@@ -28,6 +32,9 @@
             <TextBox Text="{Binding ModelYear}"/>
             <Label Content="Price"/>
             <TextBox Text="{Binding Price}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2"
+                    Margin="5">
             <Label Content="Quantity"/>
             <TextBox Text="{Binding Quantity}"/>
         </StackPanel>

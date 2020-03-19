@@ -30,6 +30,7 @@
             <Label Content="Shipped date"/>
             <TextBox Text="{Binding ShippedDate}"/>
         </StackPanel>
-        <local:OrderItemsView Grid.Column="2" DataContext="{Binding OrderItemsViewModel}" />
+        <local:OrderItemsView Grid.Column="2"
+                              DataContext="{Binding OrderItemsViewModel}" />
     </Grid>
 </UserControl>

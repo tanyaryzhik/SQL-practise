@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 
 namespace ViewModel
@@ -11,8 +12,8 @@ namespace ViewModel
     {
         public ObservableCollection<OrderItem> OrderItems { get; set; }
 
- 
         private OrderItem selectedOrderItem;
+
         public OrderItem SelectedOrderItem
         {
             get
@@ -34,6 +35,7 @@ namespace ViewModel
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged(string propertyName)
         {
             if (this.PropertyChanged is null)

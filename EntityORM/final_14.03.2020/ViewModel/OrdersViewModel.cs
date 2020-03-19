@@ -13,6 +13,7 @@ namespace ViewModel
     public class OrdersViewModel : INotifyPropertyChanged
     {
         private OrderItemsViewModel orderItemsViewModel;
+
         public OrderItemsViewModel OrderItemsViewModel
         {
             get
@@ -64,7 +65,7 @@ namespace ViewModel
                     return;
                 this.selectedOrder = value;
                 this.OnPropertyChanged(nameof(this.selectedOrder));
-                this.orderItemsViewModel = new OrderItemsViewModel(this.selectedOrder.OrderItems);
+                this.OrderItemsViewModel = new OrderItemsViewModel(this.SelectedOrder.OrderItems);
             }
         }
 
