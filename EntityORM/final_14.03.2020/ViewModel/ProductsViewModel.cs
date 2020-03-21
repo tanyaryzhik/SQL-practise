@@ -27,7 +27,7 @@ namespace ViewModel
                 if (this.quantity == value)
                     return;
                 this.quantity = value;
-                this.OnPropertyChanged(nameof(this.quantity));
+                this.OnPropertyChanged(nameof(this.Quantity));
             }
         }
 
@@ -44,6 +44,7 @@ namespace ViewModel
                 if (this.selectedProduct == value)
                     return;
                 this.selectedProduct = value;
+                this.OnPropertyChanged(nameof(this.SelectedProduct));
                 this.Quantity = this.SelectedProduct.Stocks.Sum(st => st.Quantity);
             }
         }

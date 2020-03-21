@@ -25,7 +25,7 @@ namespace ViewModel
                 if (this.orderItemsViewModel == value)
                     return;
                 this.orderItemsViewModel = value;
-                this.OnPropertyChanged(nameof(this.orderItemsViewModel));
+                this.OnPropertyChanged(nameof(this.OrderItemsViewModel));
             }
         }
 
@@ -42,7 +42,7 @@ namespace ViewModel
                 if (this.orders == value)
                     return;
                 this.orders = value;
-                this.OnPropertyChanged(nameof(this.orders));
+                this.OnPropertyChanged(nameof(this.Orders));
             }
         }
 
@@ -64,7 +64,7 @@ namespace ViewModel
                 if (this.selectedOrder == value)
                     return;
                 this.selectedOrder = value;
-                this.OnPropertyChanged(nameof(this.selectedOrder));
+                this.OnPropertyChanged(nameof(this.SelectedOrder));
                 this.OrderItemsViewModel = new OrderItemsViewModel(this.SelectedOrder.OrderItems);
             }
         }

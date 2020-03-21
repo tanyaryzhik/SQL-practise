@@ -25,7 +25,7 @@ namespace ViewModel
                 if (this.selectedOrderItem == value)
                     return;
                 this.selectedOrderItem = value;
-                this.OnPropertyChanged(nameof(this.selectedOrderItem));
+                this.OnPropertyChanged(nameof(this.SelectedOrderItem));
             }
         }
 

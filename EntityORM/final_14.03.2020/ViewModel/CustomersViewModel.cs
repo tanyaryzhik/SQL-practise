@@ -27,8 +27,8 @@ namespace ViewModel
                 if (this.selectedCustomer == value)
                     return;
                 this.selectedCustomer = value;
-                this.OnPropertyChanged(nameof(this.selectedCustomer));
-                this.OrdersViewModel = new OrdersViewModel(this.selectedCustomer.Orders);
+                this.OnPropertyChanged(nameof(this.SelectedCustomer));
+                this.OrdersViewModel = new OrdersViewModel(this.SelectedCustomer.Orders);
             }
         }
 
@@ -45,7 +45,7 @@ namespace ViewModel
                 if (this.ordersViewModel == value)
                     return;
                 this.ordersViewModel = value;
-                this.OnPropertyChanged(nameof(this.ordersViewModel));
+                this.OnPropertyChanged(nameof(this.OrdersViewModel));
             }
         }
 
